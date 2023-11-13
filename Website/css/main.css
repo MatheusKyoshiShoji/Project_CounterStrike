@@ -1,11 +1,24 @@
+:root {
+    --font-title: csFont;
+    --font-text: 'Montserrat';
+    --font-secondary-color: #1F202F;
+    --font-primary-color: white;
+    --positive-text-color: #48a71f;
+    --primary-color: #293473;
+    --secondary-color: #F2921D;
+    --bg-color: linear-gradient(80deg, rgba(8,10,18,1) 0%, rgba(6,13,60,1) 71%, rgba(8,12,20,1) 100%);
+    --card-color: #222C70;
+    --filter-color: linear-gradient(80deg, rgba(8,10,18,0.9) 0%, rgba(11,14,27,0.9) 61%, rgba(8,12,20,0.9) 100%); 
+}
+
 @font-face {
     font-family: csFont;
     src: url(High\ Speed.ttf);
 }
 
  body {
-    font-family: 'Montserrat';
-    color: white;
+    font-family: var(--font-text);
+    color: var(--font-primary-color);
     font-size: 1em;
  }
 
@@ -14,7 +27,6 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-family: csFont;
 }
 
 .container {
@@ -24,53 +36,23 @@ header {
     align-items: center;
 }
 
-.logo-header {
+.logo {
     width: 75px;
     height: 75px;
 }
 
 nav a {
-    color: white;
+    color: var(--font-primary-color);
+    font-family: csFont;
     padding: 1rem;
 }
 nav a:hover {
-    color: #F2921D;
+    color: var(--secondary-color);
 }
 
-
-.hero {
-    height: 100vh;
-    background-image: linear-gradient(80deg, rgba(22, 27, 46, 0.9) 0%, rgba(18, 24, 46, 0.9) 61%, rgba(19, 27, 47, 0.9) 100%), url(/Website/img/hero.jpeg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: relative;
+.title-dark {
+    color: var(--font-secondary-color);
 }
-
-.section-hero {
-    width: 100%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.section-hero h1{
-    color: white;
-    font-weight: 700;
-    font-family: csFont;
-
-}
-
-.container-image {
-    width: 500px;
-}
-
-.section-hero img {
-    height: auto;
-    width: 100%;
-}
-
-.hero-text {
-    width: 40%;
+.title-light {
+    color: var(--font-primary-color);
 }

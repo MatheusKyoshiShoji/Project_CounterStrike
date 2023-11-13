@@ -2,18 +2,25 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
-    <link rel="stylesheet" href="./css/reset.css">
-    <link rel="stylesheet" href="./css/main.css">
-    <title>Project Counter Strike </title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/home.css" />
+    <title>Project Counter Strike</title>
 </head>
 
 <body>
+    <div class="bg-video">
+        <video autoplay muted loop class="trailer-bg">
+            <source src="/Website/img/cstrailer.mp4" type="video/mp4" />
+            Your browser does not support HTML5 video.
+        </video>
+    </div>
     <div class="hero">
         <header>
-            <img src="img/logo_cs2.jpeg" alt="Logo" class="logo-header">
+            <img src="img/logo_cs2.jpeg" alt="Logo" class="logo" />
             <nav>
                 <a href="index.html"> HOME </a>
                 <a href="#"> Sobre </a>
@@ -23,19 +30,139 @@
         </header>
         <div class="section-hero container">
             <div class="hero-text">
-                <h1> Project Counter Strike </h1>
-                <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Eum voluptatem porro illum iure officiis dignissimos fugit natus animi eveniet amet?
-                    Laudantium quisquam quas, iste assumenda dolor earum laborum numquam magnam?</p>
+                <h1>Project Counter Strike</h1>
+                <p>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eum
+                    voluptatem porro illum iure officiis dignissimos fugit natus animi
+                    eveniet amet? Laudantium quisquam quas, iste assumenda dolor earum
+                    laborum numquam magnam?
+                </p>
             </div>
-            <div class="container-image">
-                <img src="img/cs2_char.png" alt="CS2 Personagens">
-            </div>
-            
         </div>
     </div>
+    <section class="section-welcome container-section1">
+        <div class="section1-text">
+            <h1 class="title-dark">O FPS tático mais popular da história</h1>
+            <div class="card-grid">
+                <div class="card">
+                    <h3>Média de jogadores</h3>
+                    <p><span class="positive"> +1.000.000 </span> por dia</p>
+                </div>
+                <div class="card">
+                    <h3>2º Lugar nos eSports mais assistidos</h3>
+                    <p>
+                        <span class="positive">+400M</span> horas assistidas em
+                        transimissões
+                    </p>
+                </div>
+                <div class="card">
+                    <h3>Brasil 3º maior playerbase</h3>
+                    <p>5.43% de 14 milhões de jogadores do mundo</p>
+                </div>
+                <div class="card">
+                    <h3>+450M de cópias</h3>
+                    <p>
+                        Média de Downloads por semana 7 dias:
+                        <span class="positive">700 mil</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="container-image">
+            <img src="img/cs2_char.png" alt="" />
+        </div>
+    </section>
+    <section class="section-sobre">
+        <div class="container-video">
+            <video autoplay muted loop class="video-sobre">
+                <source src="/Website/img/cs_history.mp4" type="video/mp4" />
+                Your browser does not support HTML5 video.
+            </video>
+        </div>
+        <div class="section-text">
+            <h1 class="title-light"> O que é Counter Strike</h1>
+            <p>
+                Counter strike, ou “CS”, é uma série de jogos multijogador de tiro em primeira pessoa (FPS), que se popularizou no 
+                período dos anos 2000, e até os dias de hoje é considerado um dos títulos mais populares e importante para história 
+                dos jogos competitivos. A série é conhecida por sua jogabilidade competitiva e desafiadora, seu alto uso de trabalho 
+                em equipe e táticas.
+            </p>
+        </div>
+    </section>
+    <section class="section-timeline ">
+        <h1> Linha do tempo </h1>
+        <div class="container-timeline">
+            <div class="card-timeline">
+                <div class="container-card-img">
+                    <img src="img/cs1.jpg" alt="">
+                    <div class="overlay"> 
+                        <h2> Counter Strike 1.6 </h2>
+                        <p> 1999 </p>
+                    </div>
+                </div>
+            </div>
+            <div class="card-timeline">
+                <div class="container-card-img">
+                    <img src="img/cs_source.jpg" alt="">
+                    <div class="overlay"> 
+                        <h2> Counter Strike Source </h2>
+                        <p> 2004 </p>
+                    </div>
+                </div>
+            </div>
+            <div class="card-timeline">
+                <div class="container-card-img">
+                    <img src="img/csgo.jpg" alt="">
+                    <div class="overlay"> 
+                        <h2> CS:GO</h2>
+                        <p> 2012 </p>
+                    </div>
+                </div>
+            </div>
+            <div class="card-timeline">
+                <div class="container-card-img">
+                    <img src="img/cs2.jpg" alt="">
+                    <div class="overlay"> 
+                        <h2> Counter Strike 2 </h2>
+                        <p> 2023 </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section-action">
+        <div class="section-text">
+            <h1> Demonstre suas habilidades </h1>
+            <p> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cumque illum illo
+                sapiente cupiditate voluptates repellendus excepturi perferendis eligendi quia vitae!
+                Asperiores officia corrupti molestias veritatis laboriosam harum doloribus, aut ex.
+            </p>
+        </div>
+    </section>
+    <section class="section-steam">
+        <div class="container-steam">
 
-
+        </div>
+        <div class="section-text text-steam">
+            <h1> Se intressou pelo jogo ? Jogue agora mesmo gratuitamente na plataforma Steam </h1>
+        </div>
+        <a class="button-steam"> <i class="fa fa-fw fa-brands fa-steam"></i> Jogue agora </a>
+    </section>
+    <footer>
+        <div class="container-footer">
+            <img src="img/logo_cs2.jpeg" alt="Logo" class="logo">
+            <nav>
+                <a href="index.html"> HOME </a>
+                <a href="#"> Sobre </a>
+                <a href="#"> eSport </a>
+                <a href="#"> Login </a>
+            </nav>
+        </div>
+        <hr class="divider">
+        <div class="div-copyright">
+            <p>Copyright © 2023 Matheus Kyoshi Shoji | Todos os direitos reservados </p>
+        </div>
+    </footer>
 </body>
 
 </html>
