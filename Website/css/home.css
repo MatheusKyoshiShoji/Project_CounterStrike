@@ -24,11 +24,13 @@ h1 {
     color: var(--font-primary-color);
     font-weight: 700;
     font-family: csFont;
-    font-size: 2em;
+    font-size: 1.5em;
 }
 
-.hero-text {
-    width: 40%;
+.hero-text p{
+    width: 50%;
+    text-align: justify;
+    font-size: 0.8em;
 }
 
 .bg-video {
@@ -111,11 +113,12 @@ h1 {
 }
 
 .section-text p {
+    font-size: 0.8em;
     text-align: justify;
 }
 
 .section-sobre-text p {
-    font-size: 1.2em;
+    font-size: 1em;
     text-align: justify;
     font-weight: 500;
 }
@@ -158,7 +161,7 @@ h1 {
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
-    height: 60vh;
+    height: 80vh;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -187,6 +190,6 @@ h1 {
 
 .text-steam {
     text-align: center;
-    font-size: 0.7em;
+    font-size: 0.8em;
     width: 60%;
 }

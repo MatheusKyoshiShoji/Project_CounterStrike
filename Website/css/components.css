@@ -38,13 +38,13 @@ footer {
 }
 
 .card h3 {
-    font-size: 1.5em;
+    font-size: 1em;
     margin-bottom: 0.5rem;
     font-weight: 700;
 }
 
 .card p {
-    font-size: 1em;
+    font-size: 0.7em;
     font-weight: 600;
 }
 
@@ -53,8 +53,8 @@ footer {
 }
 
 .card-timeline {
-    height: 400px;
-    width: 350px;
+    height: 300px;
+    width: 200px;
     border-radius: 20px;
     background-color: var(--card-color);
     box-shadow: -1rem 0 3rem #000;
@@ -103,18 +103,19 @@ footer {
     border-radius: 20px;
     display: flex;
     flex-direction: column;
-    font-size: 1em;
+    font-size: 0.7em;
     justify-content: center;
     align-items: center;
 }
 
 .button-steam {
     padding: 1rem;
-    font-size: 1.5em;
+    font-size: 1em;
     background-color: var(--font-secondary-color);
     cursor: pointer;
     transition: 0.2s ease-in-out;
 }
+
 
 .button-steam:hover {
     background-color: var(--primary-color);
