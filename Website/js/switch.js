@@ -12,7 +12,7 @@ const switchEffect = document.querySelectorAll('.troca-botao');
 switchEffect[0].addEventListener('click', () => {
   loginDiv.style.transform = 'translateX(-120%)';
   signupDiv.style.transform = 'translateX(0)';
-  formArea.style.height = '75%';
+  formArea.style.height = '80%';
 
 });
 
@@ -21,5 +21,5 @@ switchEffect[1].addEventListener('click', () => {
   loginDiv.style.transform = 'translateX(0)';
   signupDiv.style.transform = 'translateX(-120%)';
   
-  formArea.style.height = '50%';
+  formArea.style.height = '55%';
 });
