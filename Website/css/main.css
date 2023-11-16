@@ -1,14 +1,20 @@
 :root {
     --font-title: csFont;
     --font-text: 'Montserrat';
-    --font-secondary-color: #1F202F;
     --font-primary-color: white;
+    --font-secondary-color: #1F202F;
     --positive-text-color: #48a71f;
     --primary-color: #293473;
     --secondary-color: #F2921D;
     --bg-color: linear-gradient(80deg, rgba(8,10,18,1) 0%, rgba(6,13,60,1) 71%, rgba(8,12,20,1) 100%);
+    --bg-form-color: linear-gradient(80deg, rgba(35,44,99,1) 0%, rgba(11,14,27,1) 100%);
     --card-color: #222C70;
     --filter-color: linear-gradient(80deg, rgba(8,10,18,0.9) 0%, rgba(11,14,27,0.9) 61%, rgba(8,12,20,0.9) 100%); 
+}
+
+* {
+    font-family: 'Montserrat';
+    color: var(--font-primary-color);
 }
 
 @font-face {
@@ -16,11 +22,6 @@
     src: url(High\ Speed.ttf);
 }
 
- body {
-    font-family: var(--font-text);
-    color: var(--font-primary-color);
-    font-size: 1em;
- }
 
 header {
     padding: 0.7rem 10%;
