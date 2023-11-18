@@ -22,7 +22,7 @@
         </div>
         <div class="container-form">
             <div id="container-switch">
-                <form id="login-side">
+                <div class="form" id="login-side">
                     <h1>Login</h1>
                     <div class="input_box">
                         <input type="text" id="input_username" required/>
@@ -32,10 +32,10 @@
                         <input type="text" id="input_senha" required/>
                         <span>Senha</span>
                     </div>
-                    <button class="btn-form"><p>LOGIN</p></button>
+                    <button class="btn-form" onclick="validarAutenticao()"><p>LOGIN</p></button>
                     <p>Não possui uma conta ? <span class="troca-botao">Registre-se</span> </p>
-                </form>
-                <form id="cadastro-side">
+                </div>
+                <div class="form" id="cadastro-side">
                     <h1>Cadastro</h1>
                     <div class="input_box">
                         <input type="text" id="input_username" required/>
@@ -57,12 +57,13 @@
                         <input type="text" id="input_senhaConfirm" required/>
                         <span>Confirmar senha</span>
                     </div>
-                    <button class="btn-form"><p>LOGIN</p></button>
+                    <button class="btn-form" onclick="registarUsuario()"><p>Cadastrar</p></button>
                     <p>Já possui uma conta ? <span class="troca-botao">Entar</span></p>
-                </form>
+                </div>
             </div>
         </div>
     </div>
 </body>
 <script src="js/switch.js"></script>
+<script src="js/sessao.js"></script>
 </html>

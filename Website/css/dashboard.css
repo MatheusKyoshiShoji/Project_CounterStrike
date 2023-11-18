@@ -1,0 +1,50 @@
+@import url(stats.css);
+
+
+.row1 {
+    display: flex;
+    gap: 50px;
+    background-color: coral;
+}
+
+.row-stats {
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    background-color: aqua;
+}
+
+.div-stats {
+    background-color: var(--dark-color);
+    font-size: 0.7em;
+    padding: 0.5rem;
+    width: 30%;
+}
+
+.div-stats span {
+    font-size: 1em;
+    color: aqua;
+}
+
+.text {
+    margin-top: 20px;
+}
+
+.text p {
+    margin-top: 5px;
+}
+
+.row-maps {
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    background-color: cadetblue;
+}
+
+.most-played {
+    background-color: var(--dark-color);
+}
+
+.most-wins {
+    background-color: var(--dark-color);
+}

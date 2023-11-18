@@ -19,14 +19,9 @@ html {
 }
 
 .container-img {
-/*     background-image: url(../img/dust2_bg.jpg);
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat; */
     overflow: hidden;
     width: 70%;
     position: relative;
-    /* z-index: 1; */
 }
 
 .container-img .slide {
@@ -117,7 +112,7 @@ html {
     height: 55%;
 }
 
-form {
+.form {
     width: 90%;
     display: flex;
     gap: 10px;
@@ -146,7 +141,7 @@ form {
     transition: color 0.6s;
 }
 
-form h1 {
+.form h1 {
     font-family: var(--font-title);
     margin-bottom: 20px;
 }

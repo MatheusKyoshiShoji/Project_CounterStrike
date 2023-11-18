@@ -23,3 +23,4 @@ switchEffect[1].addEventListener('click', () => {
   
   formArea.style.height = '55%';
 });
+
