@@ -1,17 +1,33 @@
 @import url(stats.css);
 
 
-.row1 {
+.row {
     display: flex;
-    gap: 50px;
+    gap: 30px;
     background-color: coral;
 }
 
-.row-stats {
+.column-stats {
     width: 50%;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.row-stats {
+    width: 100%;
+    height: 150px;
     display: flex;
     justify-content: space-between;
     background-color: aqua;
+}
+
+.row-stats2 {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--dark-color);
 }
 
 .div-stats {
@@ -19,6 +35,30 @@
     font-size: 0.7em;
     padding: 0.5rem;
     width: 30%;
+}
+
+.div-stats h3{
+    margin-top: 20px;
+    font-size: 1.2em;
+}
+
+.div-stats2 {
+    background-color: var(--primary-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.7em;
+    padding: 0.5rem;
+    width: 25%;
+}
+
+.div-stats2 .text {
+    margin-top: 0;
+}
+
+.div-stats2 img {
+    height: 40px;
+    width: 40px;
 }
 
 .div-stats span {
@@ -41,10 +81,62 @@
     background-color: cadetblue;
 }
 
-.most-played {
+.radial-chart {
     background-color: var(--dark-color);
+    height: 300px;
+    width: 300px;
+    padding: 1rem;
+}
+
+.row-kd {
+    margin-top: 30px;
+    width: 48%;
+    display: flex;
+    justify-content: space-between;
+    background-color: crimson;
+}
+
+.donut-chart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--dark-color);
+    height: 330px;
+    width: 270px;
+    padding: 1rem;
 }
 
 .most-wins {
     background-color: var(--dark-color);
 }
+
+.row-top {
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    height: 330px;
+    margin-top: 30px;
+    background-color: brown;
+}
+
+.top-maps {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--dark-color);
+}
+
+
+.top-weapons {
+    width: 50%;
+    background-color: darkgreen;
+}
+
+.chart-bar {
+    margin-top: 30px;
+    height: 270px;
+    width: 100%;
+}
+

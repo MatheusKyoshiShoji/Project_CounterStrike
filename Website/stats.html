@@ -1,91 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="./css/reset.css" />
-    <link rel="stylesheet" href="css/stats.css">
-    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/stats.css" />
+    <link rel="stylesheet" href="css/dashboard.css" />
     <script src="js/sessao.js"></script>
-    
+
     <title>Status</title>
 </head>
+
 <body>
     <div class="bg-image">
         <div class="container-menu">
             <div class="header-profile">
                 <div class="profile">
-                    <img src="img/profile_pic.jpg" alt="Profile pic" class="profile-pic">
+                    <img src="img/profile_pic.jpg" alt="Profile pic" class="profile-pic" />
                     <div class="profile-text">
-                        <p> Username </p>
+                        <p>Username</p>
                         <span> Nome da pessoa </span>
                     </div>
-                    <img src="https://files.catbox.moe/7imzin.png" alt="Team logo" class="team-pic">
+                    <img src="https://files.catbox.moe/7imzin.png" alt="Team logo" class="team-pic" />
                 </div>
                 <span class="vr"></span>
                 <div class="profile-stats">
-                    <img src="img/rank_guardian.png" alt="" class="rank-profile">
-                    <p> Partidas vencidas: 300 </p>
+                    <img src="img/rank_guardian.png" alt="" class="rank-profile" />
+                    <p>Partidas vencidas: 300</p>
                 </div>
             </div>
             <div class="container-display">
                 <div class="display-tab">
-                    <button class="tab-links" onclick="openOpt(event, 'Dashboard')">Dashboard</button>
-                    <button class="tab-links" onclick="openOpt(event, 'Pesquisa')">Pesquisa</button>
-                    <button class="tab-links" onclick="openOpt(event, 'Perfil')">Perfil</button>
-                    <button class="tab-links" id="tab-logout" onclick="limparSessao()">Logout</button>
+                    <button class="tab-links" onclick="openOpt(event, 'Dashboard')" id="defaultOpen">
+                        Dashboard
+                    </button>
+                    <button class="tab-links" onclick="openOpt(event, 'Pesquisa')">
+                        Pesquisa
+                    </button>
+                    <button class="tab-links" onclick="openOpt(event, 'Perfil')">
+                        Perfil
+                    </button>
+                    <button class="tab-links" id="tab-logout" onclick="limparSessao()">
+                        Logout
+                    </button>
                 </div>
                 <div id="Dashboard" class="tab-content">
-                    <h1> Dashboard </h1>
-                    <div class="row1">
-                        <div class="row-stats">
-                            <div class="div-stats">
-                                <h3> Taxa de vitória: <span> 56% </span></h3>
-                                <div class="text">
-                                    <p> Paritdas jogadas: <span>3989</span> </p>
-                                    <p> Partidas ganhas: <span>1523</span> </p>
-                                    <p> MVP: <span>1299</span> </p>
+                    <h1>Dashboard</h1>
+                    <div class="row">
+                        <div class="column-stats">
+                            <div class="row-stats">
+                                <div class="div-stats">
+                                    <h3>Taxa de vitória: <span> 56% </span></h3>
+                                    <div class="text">
+                                        <p>Paritdas jogadas: <span>3989</span></p>
+                                        <p>Partidas ganhas: <span>1523</span></p>
+                                        <p>MVP: <span>1299</span></p>
+                                    </div>
+                                </div>
+                                <div class="div-stats">
+                                    <h3>HS%: <span> 51% </span></h3>
+                                    <div class="text">
+                                        <p>Abates: <span>102573</span></p>
+                                        <p>Mortes: <span>66977</span></p>
+                                        <p>Headshots: <span>43473</span></p>
+                                    </div>
+                                </div>
+                                <div class="div-stats">
+                                    <h3>ADR: <span> 60 </span></h3>
+                                    <div class="text">
+                                        <p>Dano causado: <span>1011661959</span></p>
+                                        <p>Rounds: <span>70621</span></p>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="div-stats">
-                                <h3> HS%: <span> 51% </span></h3>
-                                <div class="text">
-                                    <p> Abates: <span>102573</span> </p>
-                                    <p> Mortes: <span>66977</span> </p>
-                                    <p> Headshots: <span>43473</span> </p>
+                            <div class="row-stats2">
+                                <div class="div-stats2">
+                                    <div class="text">
+                                        <h3>Mapa favorito</h3>
+                                        <p>Dust 2</p>
+                                    </div>
+                                    <img src="https://files.catbox.moe/qapr3c.png" alt="Map icon" />
                                 </div>
-                            </div>
-                            <div class="div-stats">
-                                <h3> ADR: <span> 60 </span></h3>
-                                <div class="text">
-                                    <p> Dano causado: <span>1011661959</span> </p>
-                                    <p> Rounds: <span>70621</span> </p>
+                                <div class="div-stats2">
+                                    <div class="text">
+                                        <h3>C4 Plantadas</h3>
+                                        <p>5000</p>
+                                    </div>
+                                    <img src="https://files.catbox.moe/1ojl8n.png" alt="Map icon" />
+                                </div>
+                                <div class="div-stats2">
+                                    <div class="text">
+                                        <h3>C4 Defusadas</h3>
+                                        <p>1000</p>
+                                    </div>
+                                    <img src="https://files.catbox.moe/nc8qe8.png" alt="Map icon" />
                                 </div>
                             </div>
                         </div>
                         <div class="row-maps">
-                            <div class="most-played">
-                                <p>Mais jogados</p>
+                            <div class="radial-chart">
+                                <canvas id="map_played"></canvas>
                             </div>
-                            <div class="most-wins">
-                                <p>Mais vitorias</p>
+                            <div class="radial-chart">
+                                <canvas id="weapon_used"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="row-kd">
+                            <div class="donut-chart">
+                                <canvas id="chart_kd"></canvas>
+                            </div>
+                            <div class="donut-chart">
+                                <canvas id="chart_Dmr"></canvas>
+                            </div>
+                        </div>
+                        <div class="row-top">
+                            <div class="top-maps">
+                                <h3> Top maps </h3>
+                                <div class="chart-bar">
+                                    <canvas id="top_map"></canvas>
+                                </div>
+                            </div>
+                            <div class="top-weapons">
+                                <h3> Top armas </h3>
+                                <div class="chart-bar">
+                                    <canvas id="top_weapon"></canvas>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div id="Pesquisa" class="tab-content">
-                    <h1> Pesquisa </h1>
-                    <p> teste ....</p>
+                    <h1>Pesquisa</h1>
+                    <p>teste ....</p>
                 </div>
                 <div id="Perfil" class="tab-content">
-                    <h1> Perfil </h1>
-                    <p> teste ....</p>
+                    <h1>Perfil</h1>
+                    <p>teste ....</p>
                 </div>
             </div>
         </div>
     </div>
 </body>
 <script src="js/tab.js"></script>
+<script src="js/dashboard.js"></script>
+
 </html>

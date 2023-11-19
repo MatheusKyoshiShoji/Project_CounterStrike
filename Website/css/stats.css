@@ -2,7 +2,7 @@
 
 .bg-image {
     background: var(--filter-color), url(../img/hero.jpeg);
-    height: 100vh;
+    height: 100%;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -99,11 +99,16 @@
     background-color: var(--primary-color);
 }
 
+.container-display #Dashboard .tab-content {
+    display: block;
+}
+
 .tab-content {
     display: none;
     background-color: var(--primary-color-dark);
     padding: 1rem;
 }
+
 
 #tab-logout:hover {
     background-color: #950000;
