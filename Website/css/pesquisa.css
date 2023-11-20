@@ -142,7 +142,45 @@
     font-size: 0.7em;
     line-height: 22px;
     cursor: pointer;
-    text-transform: capitalize;
+    opacity: 0;
+    animation: fadeIn 0.3s ease forwards;
+    position: relative;
+    overflow: hidden;
+}
+
+@keyframes fadeIn{
+    0%{
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.quiz-box .option-container .option.correct::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: var(--positive-text-color);
+    z-index: -1;
+}
+
+.quiz-box .option-container .option.wrong::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: var(--negative-text-color);
+    z-index: -1;
+}
+
+.quiz-box .option-container .option.opcao-bloqueada {
+    pointer-events: none;
 }
 
 .quiz-box .respostas{
