@@ -7,7 +7,7 @@
     --primary-color: #293473;
     --primary-color-dark: #1C244F;
     --secondary-color: #F2921D;
-    --dark-color: #171a21;
+    --dark-color: rgba(23, 26, 33, 0.8);
     --bg-color: linear-gradient(80deg, rgba(8,10,18,1) 0%, rgba(6,13,60,1) 71%, rgba(8,12,20,1) 100%);
     --bg-form-color: linear-gradient(80deg, rgba(35,44,99,1) 0%, rgba(11,14,27,1) 100%);
     --card-color: #222C70;

@@ -39,7 +39,7 @@ const configMapPlayed = {
                 },
                 suggestedMin: 0,
                 suggestedMax: 100,
-                backgroundColor: '#fff',
+                backgroundColor: '#1F202F',
                 ticks: {
                     maxTicksLimit: 6,
                     display: false
@@ -102,10 +102,10 @@ const configWeapon = {
                 },
                 suggestedMin: 0,
                 suggestedMax: 100,
-                backgroundColor: '#fff',
+                backgroundColor: '#1F202F',
                 ticks: {
                     maxTicksLimit: 6,
-                    display: false
+                    display: false,
                 }
             }
         },
@@ -257,22 +257,21 @@ const data = {
         'Inferno',
     ],
     datasets: [{
-        data: [72, 74, 85, 81, 74],
+        data: [68, 60, 54, 52, 51],
         fill: true,
-        backgroundColor: 'rgba(53, 97, 44, 0.6)',
         backgroundColor: [
-            'rgba(255, 26, 104, 1)',
-            'rgba(54, 162, 235, 1)',
-            'rgba(255, 206, 86, 1)',
-            'rgba(75, 192, 192, 1)',
-            'rgba(153, 102, 255, 1)',
+            'rgb(113, 178, 76)',
+            'rgb(113, 178, 76)',
+            'rgb(113, 178, 76)',
+            'rgb(113, 178, 76)',
+            'rgb(113, 178, 76)',
         ],
         borderColor: [
-            'rgba(255, 26, 104, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 206, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)',
-            'rgba(153, 102, 255, 0.2)',
+            'rgba(202, 81, 81, 0.8)',
+            'rgba(202, 81, 81, 0.8)',
+            'rgba(202, 81, 81, 0.8)',
+            'rgba(202, 81, 81, 0.8)',
+            'rgba(202, 81, 81, 0.8)',
           ],
         borderWidth: 0,
         borderSkipped: false,
@@ -301,7 +300,7 @@ const progressBar = {
             ctx.textBaseline = 'middle';
             ctx.fillText(data.labels[index], left, y.getPixelForValue(index) - fontSizeLabel - 5);
 
-            const fontSizeDatapoint = 15;
+            const fontSizeDatapoint = 12;
             ctx.font = `bolder ${fontSizeDatapoint}px sans-serif`;
             ctx.fillStyle = 'rgba(255, 255, 255, 1)';
             ctx.textAlign = 'right';
@@ -320,8 +319,9 @@ const configTopMap = {
     type: 'bar',
     data,
     options: {
-        aspectRatio: 1.1,
         indexAxis: 'y',
+        responsive: true,
+        maintainAspectRatio: false,
         plugins: {
             legend: {
                 display: false,
@@ -335,7 +335,9 @@ const configTopMap = {
                 },
                 ticks: {
                     display: false
-                }
+                },
+                suggestedMin: 0,
+                suggestedMax: 100,
             },
             y: {
                 beginAtZero: true,
@@ -369,7 +371,7 @@ const dataTopWeapon = {
         'P90',
     ],
     datasets: [{
-        data: [80, 72, 60, 50, 67],
+        data: [80, 72, 60, 50, 48],
         fill: true,
         backgroundColor: 'rgba(53, 97, 44, 0.6)',
         backgroundColor: [
@@ -396,9 +398,10 @@ const dataTopWeapon = {
 
 const configTopWeapon = {
     type: 'bar',
-    dataTopWeapon,
+    data: dataTopWeapon,
     options: {
-        aspectRatio: 1.1,
+        responsive: true,
+        maintainAspectRatio: false,
         indexAxis: 'y',
         plugins: {
             legend: {
@@ -413,7 +416,9 @@ const configTopWeapon = {
                 },
                 ticks: {
                     display: false
-                }
+                },
+                suggestedMin: 0,
+                suggestedMax: 100,
             },
             y: {
                 beginAtZero: true,

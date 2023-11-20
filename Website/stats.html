@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="./css/reset.css" />
     <link rel="stylesheet" href="css/stats.css" />
     <link rel="stylesheet" href="css/dashboard.css" />
+    <link rel="stylesheet" href="css/pesquisa.css" />
     <script src="js/sessao.js"></script>
 
     <title>Status</title>
@@ -35,10 +36,10 @@
             </div>
             <div class="container-display">
                 <div class="display-tab">
-                    <button class="tab-links" onclick="openOpt(event, 'Dashboard')" id="defaultOpen">
+                    <button class="tab-links" onclick="openOpt(event, 'Dashboard')">
                         Dashboard
                     </button>
-                    <button class="tab-links" onclick="openOpt(event, 'Pesquisa')">
+                    <button class="tab-links" onclick="openOpt(event, 'Pesquisa')" id="defaultOpen">
                         Pesquisa
                     </button>
                     <button class="tab-links" onclick="openOpt(event, 'Perfil')">
@@ -50,7 +51,7 @@
                 </div>
                 <div id="Dashboard" class="tab-content">
                     <h1>Dashboard</h1>
-                    <div class="row">
+                    <div class="row1">
                         <div class="column-stats">
                             <div class="row-stats">
                                 <div class="div-stats">
@@ -110,7 +111,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row2">
                         <div class="row-kd">
                             <div class="donut-chart">
                                 <canvas id="chart_kd"></canvas>
@@ -120,14 +121,14 @@
                             </div>
                         </div>
                         <div class="row-top">
-                            <div class="top-maps">
-                                <h3> Top maps </h3>
+                            <div class="top-chart">
+                                <h3> Mapas mais jogados </h3>
                                 <div class="chart-bar">
                                     <canvas id="top_map"></canvas>
                                 </div>
                             </div>
-                            <div class="top-weapons">
-                                <h3> Top armas </h3>
+                            <div class="top-chart">
+                                <h3> Mais abates </h3>
                                 <div class="chart-bar">
                                     <canvas id="top_weapon"></canvas>
                                 </div>
@@ -137,7 +138,77 @@
                 </div>
                 <div id="Pesquisa" class="tab-content">
                     <h1>Pesquisa</h1>
-                    <p>teste ....</p>
+                    <div class="container-pesquisa">
+                        <div class="container-text-pesquisa">
+                            <h2> Quiz do Project Counter-Strike </h2>
+                            <p> Teste seu níve de conhecimento com perguntas sobre a franquia! </p>
+                            <div class="container-image-form-ranks">
+                                <img src="https://files.catbox.moe/55gxjr.png" alt="cs_ranks" id="csgo-ranks">
+                            </div>
+                            <div class="container-image-form">
+                                <img src="img/cs_char2.png" alt="Agentes dupla">
+                            </div>
+                        </div>
+                        <div class="container-form">
+                            <div class="quiz-start hide ">
+                                <h1> Iniciar Quiz </h1>
+                                <button class="btn-start"> Iniciar </button>
+                            </div>
+                            <div class="quiz-box container-quiz ">
+                                <div class="question-number ">
+                                    Questão 1 de 20
+                                </div>
+                                <div class="question-text">
+                                    Quando foi lançado a versão 1.6 de Counter Strike
+                                </div>
+                                <div class="option-container">
+                                    <div class="option">1999</div>
+                                    <div class="option">2000</div>
+                                    <div class="option">2003</div>
+                                    <div class="option">2004</div>
+                                </div>
+                                <div class="next-question-button">
+                                    <button class="btn-next"> Próxima questão</button>
+                                </div>
+                                <div class="respostas">
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                </div>
+                            </div>
+                            <div class="result-box container-quiz hide">
+                                <h1> Resultado </h1>
+                                <table>
+                                    <tr>
+                                        <td> Total de questões </td>
+                                        <td> <span class="total-question">20</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td> Tentivas </td>
+                                        <td> <span class="total-attempt">4</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td> Corretas  </td>
+                                        <td> <span class="total-correct">17</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td> Erradas  </td>
+                                        <td> <span class="total-wrong">3</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td> Porcentagem  </td>
+                                        <td> <span class="total-percentage">90%</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td> Patente  </td>
+                                        <td> <span class="total-score"> <img src="img/rank_guardian.png" alt="rank"></span></td>
+                                    </tr>
+                                </table>
+                                <button type="button" class="btn-next">Tente novamente</button>
+                                <button type="button" class="btn-next">Finalizar</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div id="Perfil" class="tab-content">
                     <h1>Perfil</h1>
@@ -147,6 +218,7 @@
         </div>
     </div>
 </body>
+<script src="js/quiz.js"></script>
 <script src="js/tab.js"></script>
 <script src="js/dashboard.js"></script>
 
