@@ -1,11 +1,18 @@
 var numeroQuestao = document.querySelector(".question-number");
 var textoQuestao = document.querySelector(".question-text");
 var elementoOpcaoContainer = document.querySelector(".option-container") 
+var elementoIndicadorResposta = document.querySelector(".respostas");
+var inicioBox = document.querySelector(".quiz-start")
+var quizBox = document.querySelector(".quiz-box")
+var resultadoBox = document.querySelector(".result-box")
 
 var contadorQuestao = 0;
 var questaoCorrespondente;
 var questoesDisponiveis = [];
 var opcoesDisponiveis = [];
+var respostaCorretas = 0;
+var respostaErradas = 0;
+var tentativas = 0;
 
 function registarQuestoesDisponiveis() {
     var totalQuestoes = quiz.length;
@@ -68,15 +75,19 @@ function bloquearOpcao() {
     }
 }
 
+
 function verificarResposta(element) {
     var id = parseInt(element.id);
     // Pega o valor do id da resposta e compara com a resposta da questao correspondente
     if(id === questaoCorrespondente.resposta) {
-        console.log("certo")
         element.classList.add("correct");
+        atualizarIndicador("correct");
+        respostaCorretas++;
+        console.log(respostaCorretas);
     } else {
         element.classList.add("wrong");
-
+        atualizarIndicador("wrong");
+        respostaErradas++;
         var opcaoTamanho = elementoOpcaoContainer.children.length;
         for (var i = 0; i < opcaoTamanho; i++) {
             if(parseInt(elementoOpcaoContainer.children[i].id) === questaoCorrespondente.resposta) {
@@ -84,18 +95,83 @@ function verificarResposta(element) {
             }
         }
     }
+    tentativas++;
     bloquearOpcao();
+}
+
+function indicadorResposta() {
+    elementoIndicadorResposta.innerHTML = "";
+    var totalQuestoes = quiz.length;
+    for (var i = 0; i < totalQuestoes; i++) {
+        var indicador = document.createElement("div");
+        elementoIndicadorResposta.appendChild(indicador);
+    }
+}
+
+function atualizarIndicador(tipoMarca) {
+    // Adicionar classe de corrto no elemento
+    elementoIndicadorResposta.children[contadorQuestao - 1].classList.add(tipoMarca);
 }
 
 function proximaAlternativa() {
     if(contadorQuestao === quiz.length) {
         console.log("Acabou o quiz");
+        finalizaQuiz();
     } else {
         novaQuestao();
     }
 }
 
-window.onload = function() {
+function finalizaQuiz() {
+    // Esconder o quiz
+    quizBox.classList.add("hide");
+    // Mostar resultado
+    resultadoBox.classList.remove("hide");
+    resultadoQuiz();
+}
+
+function resultadoQuiz() {
+    var listaPatente = ['Prata1', 'Prata1', 'Prata1', 'Prata2', 'Prata3', 'Prata4', 'Prata5', 'Prata6', 'Ouro1', 'Ouro2', 'Ouro3', 
+    'Ouro4', 'AK1', 'AK2', 'AK3', 'Xerifie', 'Aguia1', 'Aguia2', 'Supremo', 'Supremo', 'Global'];
+    resultadoBox.querySelector(".total-question").innerHTML = quiz.length;
+    resultadoBox.querySelector(".total-attempt").innerHTML =  tentativas;
+    resultadoBox.querySelector(".total-correct").innerHTML = respostaCorretas
+    resultadoBox.querySelector(".total-wrong").innerHTML = tentativas - respostaCorretas;
+    var porcentagemAcerto = (respostaCorretas/quiz.length) * 100;
+    resultadoBox.querySelector(".total-percentage").innerHTML = porcentagemAcerto.toFixed(2) + '%';
+    resultadoBox.querySelector(".total-score").innerHTML = listaPatente[respostaCorretas];
+    /* `<img src="img/rank_guardian.png" alt="rank"></img>`     */ 
+}
+
+function resetarQuiz() {
+    contadorQuestao = 0;
+    respostaCorretas = 0;
+    tentativas = 0;
+}
+
+function tentarNovamente() {
+    resultadoBox.classList.add("hide");
+    quizBox.classList.remove("hide");
+    resetarQuiz();
+    iniciarQuiz();
+} 
+
+function voltarInicio() {
+    resultadoBox.classList.add("hide");
+    inicioBox.classList.remove("hide")
+    resetarQuiz();
+}
+
+// FUNÇÕES INICIALIZADAS PARA O QUIZ
+
+function iniciarQuiz() {
+
+    // Econder quiz
+    inicioBox.classList.add("hide");
+    // Mostar quiz
+    quizBox.classList.remove("hide");
+
     registarQuestoesDisponiveis();
     novaQuestao()
+    indicadorResposta();
 }

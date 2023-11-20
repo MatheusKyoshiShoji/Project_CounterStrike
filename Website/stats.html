@@ -150,11 +150,11 @@
                             </div>
                         </div>
                         <div class="container-form">
-                            <div class="quiz-start hide ">
+                            <div class="quiz-start">
                                 <h1> Iniciar Quiz </h1>
-                                <button class="btn-start"> Iniciar </button>
+                                <button class="btn-start" onclick="iniciarQuiz()"> Iniciar </button>
                             </div>
-                            <div class="quiz-box container-quiz ">
+                            <div class="quiz-box container-quiz hide ">
                                 <div class="question-number">
                                     Questão 1 de 20
                                 </div>
@@ -167,9 +167,6 @@
                                     <button class="btn-next" onclick="proximaAlternativa()"> Próxima questão</button>
                                 </div>
                                 <div class="respostas">
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
                                 </div>
                             </div>
                             <div class="result-box container-quiz hide">
@@ -177,31 +174,31 @@
                                 <table>
                                     <tr>
                                         <td> Total de questões </td>
-                                        <td> <span class="total-question">20</span></td>
+                                        <td> <span class="total-question"></span></td>
                                     </tr>
                                     <tr>
                                         <td> Tentivas </td>
-                                        <td> <span class="total-attempt">4</span></td>
+                                        <td> <span class="total-attempt"></span></td>
                                     </tr>
                                     <tr>
                                         <td> Corretas  </td>
-                                        <td> <span class="total-correct">17</span></td>
+                                        <td> <span class="total-correct"></span></td>
                                     </tr>
                                     <tr>
                                         <td> Erradas  </td>
-                                        <td> <span class="total-wrong">3</span></td>
+                                        <td> <span class="total-wrong"></span></td>
                                     </tr>
                                     <tr>
                                         <td> Porcentagem  </td>
-                                        <td> <span class="total-percentage">90%</span></td>
+                                        <td> <span class="total-percentage"></span></td>
                                     </tr>
                                     <tr>
                                         <td> Patente  </td>
-                                        <td> <span class="total-score"> <img src="img/rank_guardian.png" alt="rank"></span></td>
+                                        <td> <span class="total-score"> </span></td>
                                     </tr>
                                 </table>
-                                <button type="button" class="btn-next">Tente novamente</button>
-                                <button type="button" class="btn-next">Finalizar</button>
+                                <button type="button" class="btn-next" onclick="tentarNovamente()">Tente novamente</button>
+                                <button type="button" class="btn-next" onclick="voltarInicio()">Finalizar</button>
                             </div>
                         </div>
                     </div>
