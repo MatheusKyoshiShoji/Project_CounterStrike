@@ -145,3 +145,7 @@ html {
     font-family: var(--font-title);
     margin-bottom: 20px;
 }
+
+.steam-link a {
+    color: var(--secondary-color);
+}

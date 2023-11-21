@@ -118,6 +118,7 @@ h1 {
 .section-text p {
     font-size: 0.8em;
     text-align: justify;
+    margin-top: 10px;
 }
 
 .section-sobre-text p {
@@ -168,8 +169,12 @@ h1 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-left: 10%;
+    padding: 0 10%;
+}
 
+.section-action img {
+    height: 70%;
+    width: 55%;
 }
 
 /* Section steam */

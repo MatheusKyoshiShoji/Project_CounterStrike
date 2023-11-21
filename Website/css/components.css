@@ -160,6 +160,37 @@ footer {
     letter-spacing: 0.2em;
 }
 
+.input_box select {
+    width: 100%;
+    padding: 0.7rem;
+    border: solid var(--secondary-color) 1px;
+    background: #0C0F21;
+    outline: none;
+    color: var(--font-primary-color);
+    font-size: 1em;
+}
+
+.input_box #span_select {
+    position: absolute;
+    left: 0;
+    padding: 10px;
+    pointer-events: none;
+    font-size: 0.7em;
+    color: var(--primary-color);
+    text-transform: uppercase;
+    transition: 0.5s;
+}
+
+.input_box select:valid~#span_select,
+.input_box select:focus~#span_select {
+    color: var(--font-secondary-color);
+    transform: translateX(10px) translateY(-7px);
+    font-size: 0.65em;
+    padding: 0 10px;
+    background: var(--secondary-color);
+    letter-spacing: 0.2em;
+}
+
 .btn-form {
     padding: 1.5rem;
     color: var(--font-primary-color);
