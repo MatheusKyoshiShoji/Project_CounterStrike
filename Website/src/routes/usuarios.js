@@ -12,4 +12,8 @@ router.post("/autenticar", function (req, res) {
     usuarioController.autenticar(req, res);
 });
 
+router.get('/pegarDadosSteam', function (req, res) {
+    usuarioController.pegarDadosSteam(req, res);
+});
+    
 module.exports = router;

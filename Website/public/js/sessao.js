@@ -1,6 +1,7 @@
 // Switch.js
 function limparSessao() {
-    window.location = "login.html";
+    sessionStorage.clear();
+    window.location = "../login.html";
 }
 
 function validarAutenticao() {

@@ -1,3 +1,6 @@
+const { API } = require('csgo.js');
+const { MAPS } = require("csgo.js");
+require('dotenv').config();
 var usuarioModel = require("../models/usuarioModel");
 
 function autenticar(req, res) {
@@ -79,7 +82,16 @@ function cadastrar(req, res) {
     }
 }
 
+async function pegarDadosSteam() {
+    var steamID =  req.body.steamID;
+    const userSteam = await API.fetchUser(steamID, process.env.STEAM_TOKEN);
+    const { profilestate, personaname, profileurl } = userSteam.info();
+    const userInfo = [profilestate, personaname, profileurl];
+    console.log(userInfo);
+}
+
 module.exports = {
     autenticar,
-    cadastrar
+    cadastrar,
+    pegarDadosSteam
 }
