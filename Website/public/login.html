@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/login.css" />
+    <title>Login</title>
+</head>
+
+<body onload="listar()">
+    <div class="background">
+        <div class="container-img">
+            <div class="slide"></div>
+            <div class="slide"></div>
+            <div class="slide"></div>
+            <div class="slide"></div>
+            <div class="slide"></div>
+        </div>
+        <div class="container-form">
+            <div id="container-switch">
+                <div class="form" id="login-side">
+                    <h1>Login</h1>
+                    <div class="input_box">
+                        <input type="text" id="input_username" required/>
+                        <span>Username</span>
+                    </div>
+                    <div class="input_box">
+                        <input type="password" id="input_senha" required/>
+                        <span>Senha</span>
+                    </div>
+                    <button class="btn-form" onclick="entrar()"><p>LOGIN</p></button>
+                    <p>Não possui uma conta ? <span class="troca-botao">Registre-se</span> </p>
+                </div>
+                <div class="form" id="cadastro-side">
+                    <h1>Cadastro</h1>
+                    <div class="input_box">
+                        <input type="text" id="input_user" required/>
+                        <span>Username</span>
+                    </div>
+                    <div class="input_box">
+                        <input type="text" id="input_steam" required/>
+                        <span>Steam id</span>
+                    </div>
+                    <div class="input_box">
+                        <select name="Equipes" id="listaorganizacao">
+                            <option selected></option>
+                        </select>
+                        <span id="span_select">Equipe</span>
+                    </div>
+                    <div class="input_box">
+                        <input type="password" id="input_Senha" required/>
+                        <span>Senha</span>
+                    </div>
+                    <div class="input_box">
+                        <input type="password" id="input_senhaConfirma" required/>
+                        <span>Confirmar senha</span>
+                    </div>
+                    <button class="btn-form" onclick="cadastrar()"><p>Cadastrar</p></button>
+                    <p class="steam-link">Não sabe o que é um Steam ID? Acesse o link 
+                        <a href="https://help.steampowered.com/pt-br/faqs/view/2816-BE67-5B69-0FEC" target="_blank"> ver Steam id </a>
+                    </p>
+                    <p>Já possui uma conta ? <span class="troca-botao">Entar</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="js/switch.js"></script>
+<script src="js/sessao.js"></script>
+</html>
+

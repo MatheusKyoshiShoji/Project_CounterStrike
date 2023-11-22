@@ -1,0 +1,203 @@
+@import url(main.css);
+@import url(components.css);
+
+/* Seção hero */
+
+.hero {
+    font-family: var(--font-text);
+    color: var(--font-primary-color);
+    font-size: 1em;
+    height: 100vh;
+    /*  background-image: linear-gradient(80deg, rgba(22, 27, 46, 0.9) 0%, rgba(18, 24, 46, 0.9) 61%, rgba(19, 27, 47, 0.9) 100%), url(/Website/img/hero.jpeg);  */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.section-hero {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+h1 {
+    color: var(--font-primary-color);
+    font-weight: 700;
+    font-family: csFont;
+    font-size: 1.5em;
+}
+
+.hero-text p{
+    width: 50%;
+    text-align: justify;
+    font-size: 0.8em;
+}
+
+.bg-video {
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.trailer-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.bg-video::after {
+    content: '';
+    width: inherit;
+    height: inherit;
+    position: fixed;
+    inset: 0;
+    background: var(--filter-color);
+}
+
+/* Seção dados */
+
+.section-welcome {
+    height: 80vh;
+    background-image: url(../assets/img/bg_cs2.png);
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    background-size: 100%, auto;
+}
+
+.container-section1 {
+    padding-left: 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.section-welcome .section1-text {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    width: 45%;
+}
+
+.container-image {
+    height: 100%;
+    width: 40%;
+}
+
+.section-welcome img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    object-position: right bottom;
+}
+
+/* Seção o que é */
+
+.section-sobre {
+    background-image: var(--filter-color), url(../assets/img/maps_bg.jpg);
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    height: 70vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 10%;
+}
+
+.section-text {
+    width: 35%;
+    color: var(--font-primary-color);
+}
+
+.section-text p {
+    font-size: 0.8em;
+    text-align: justify;
+    margin-top: 10px;
+}
+
+.section-sobre-text p {
+    font-size: 1em;
+    text-align: justify;
+    font-weight: 500;
+}
+
+.container-video {
+    height: 100%;
+    width: 45%;
+    filter: opacity(70%);
+}
+
+.video-sobre {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+/* Seção time line */
+
+.section-timeline {
+    padding: 2rem 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-timeline {
+    padding: 5% 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Seção action */
+
+.section-action {
+    background-image: var(--filter-color), url(../assets/img/cs_agents_bg.jpeg);
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    height: 80vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10%;
+}
+
+.section-action img {
+    height: 70%;
+    width: 55%;
+}
+
+/* Section steam */
+
+.section-steam {
+    background-color: var(--secondary-color);
+    padding: 2rem 10%;
+    gap: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-steam {
+    background-color: whitesmoke;
+    height: 40vh;
+    width: 60%;
+    border-radius: 2em;
+}
+
+.text-steam {
+    text-align: center;
+    font-size: 0.8em;
+    width: 60%;
+}
