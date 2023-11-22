@@ -15,7 +15,7 @@ function autenticar(req, res) {
 
         usuarioModel.autenticar(username, senha)
             .then(
-                function (resultadoAutenticar) {
+                async function (resultadoAutenticar) {
                     console.log(`\nResultados encontrados: ${resultadoAutenticar.length}`);
                     console.log(`Resultados: ${JSON.stringify(resultadoAutenticar)}`); // transforma JSON em String
 
@@ -28,6 +28,7 @@ function autenticar(req, res) {
                             senha: resultadoAutenticar[0].senha,
                             idOrg: resultadoAutenticar[0].idOrg
                         });
+
                     } else if (resultadoAutenticar.length == 0) {
                         res.status(403).send("username e/ou senha inválido(s)");
                     } else {
@@ -82,13 +83,35 @@ function cadastrar(req, res) {
     }
 }
 
-async function pegarDadosSteam() {
-    var steamID =  req.body.steamID;
-    const userSteam = await API.fetchUser(steamID, process.env.STEAM_TOKEN);
+async function pegarDadosSteam(req, res) {
+    var steamId =  req.body.steamIdServer;
+
+    if(steamId == undefined) {
+        res.status(400).send("Seu steamId está undefined!");
+    } else {
+        console.log("tome");
+    }
+
+
+    const userSteam = await API.fetchUser('matheusshoji', process.env.STEAM_TOKEN);
     const { profilestate, personaname, profileurl } = userSteam.info();
     const userInfo = [profilestate, personaname, profileurl];
+    const { kills, deaths, time_played } = userSteam.stats();
+    const {last_match_t_wins,  last_match_ct_wins, last_match_kills, last_match_deaths, last_match_mvps} = userSteam.lastMatch()
+
+    console.log(last_match_t_wins,  last_match_ct_wins, last_match_kills, last_match_deaths, last_match_mvps);
+    console.log(kills, deaths, time_played);
     console.log(userInfo);
-}
+    const maps = userSteam.maps();
+    const keys = Object.keys(maps);
+    for (const name of keys) {
+        const map = maps[name];
+        if (map.wr > 0.5 && map.played > 100) {
+            console.log(`Wow you are pretty good in ${MAPS[name]} winning ${map.wr * 100}% of the rounds of ${map.played}!`)
+        }
+    }
+} 
+
 
 module.exports = {
     autenticar,

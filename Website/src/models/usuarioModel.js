@@ -22,7 +22,9 @@ function cadastrar(username, steamId, senha, idOrg) {
     return database.executar(instrucao);
 }
 
+
 module.exports = {
     autenticar,
     cadastrar
+
 };

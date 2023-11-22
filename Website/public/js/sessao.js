@@ -6,16 +6,20 @@ function limparSessao() {
 
 function validarAutenticao() {
     var username = sessionStorage.USERNAME_USUARIO;
+    var org = sessionStorage.ORG_USUARIO;
     var steamId = sessionStorage.STEAMID_USUARIO;
 
     var profile_username = document.getElementById("profile_username");
+    var orgProfile = document.getElementById("profile_org");
 
     if (username != null && steamId != null) {
         profile_username.innerHTML = username;
+        orgProfile.innerHTML = org;
     } else {
         window.location = "../login.html";
     }
 }
+
 
 function limparSessao() {
     sessionStorage.clear();
@@ -60,8 +64,8 @@ function entrar() {
                     console.log(JSON.stringify(json));
                     sessionStorage.USERNAME_USUARIO = json.username;
                     sessionStorage.STEAMID_USUARIO = json.steamId;
-                    /*             sessionStorage.ID_USUARIO = json.id;
-                                sessionStorage.AQUARIOS = JSON.stringify(json.aquarios); */
+                    sessionStorage.ORG_USUARIO = json.idOrg;
+                    sessionStorage.ID_USUARIO = json.idUsuario;
 
                     setTimeout(function () {
                         window.location = "./profile/stats.html";
@@ -157,3 +161,14 @@ function listar() {
             console.log(`#ERRO: ${resposta}`);
         });
 }
+
+async function dadosSteam() {
+    fetch("/usuarios/pegarDadosSteam", {
+        method: "GET",
+    }) 
+        .then(function (resposta) {
+            if(resposta.ok) {
+                console.log(resposta);
+            }
+        })
+} 
