@@ -6,12 +6,12 @@ function limparSessao() {
 
 function validarAutenticao() {
     var username = sessionStorage.USERNAME_USUARIO;
-    var nome = sessionStorage.NOME_USUARIO;
+    var steamId = sessionStorage.STEAMID_USUARIO;
 
-    var b_usuario = document.getElementById("b_usuario");
+    var profile_username = document.getElementById("profile_username");
 
-    if (username != null && nome != null) {
-        b_usuario.innerHTML = nome;
+    if (username != null && steamId != null) {
+        profile_username.innerHTML = username;
     } else {
         window.location = "../login.html";
     }
@@ -59,7 +59,7 @@ function entrar() {
                     console.log(json);
                     console.log(JSON.stringify(json));
                     sessionStorage.USERNAME_USUARIO = json.username;
-                    sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.STEAMID_USUARIO = json.steamId;
                     /*             sessionStorage.ID_USUARIO = json.id;
                                 sessionStorage.AQUARIOS = JSON.stringify(json.aquarios); */
 
