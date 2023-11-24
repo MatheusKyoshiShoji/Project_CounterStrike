@@ -88,8 +88,8 @@
 .radial-chart {
     background-color: var(--dark-color);
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-    height: 300px;
-    width: 300px;
+    height: 250px;
+    width: 250px;
     padding: 1rem;
 }
 
@@ -106,7 +106,7 @@
     background-color: var(--dark-color);
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     height: 250px;
-    width: 270px;
+    width: 250px;
     padding: 1rem;
 }
 
@@ -120,7 +120,7 @@
 }
 
 .top-chart {
-    width: 300px;
+    width: 250px;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -135,8 +135,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 200px;
-    width: 250px;
+    height: 175px;
+    width: 175px;
 }
 
 .chart-bar canvas {
