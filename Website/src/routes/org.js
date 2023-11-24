@@ -4,7 +4,7 @@ var router = express.Router();
 var orgController = require("../controllers/orgController");
 
 router.get("/buscar", function (req, res) {
-    orgController.buscarPorCnpj(req, res);
+    orgController.buscarPornomeOrg(req, res);
 });
 
 router.get("/buscar/:idOrg", function (req, res) {

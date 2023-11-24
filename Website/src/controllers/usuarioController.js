@@ -65,7 +65,7 @@ function cadastrar(req, res) {
     } else {
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(username, senha, idOrg, steamId)
+        usuarioModel.cadastrar(username, steamId , senha, idOrg)
             .then(
                 function (resultado) {
                     res.json(resultado);

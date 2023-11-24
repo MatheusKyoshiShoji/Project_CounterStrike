@@ -162,13 +162,15 @@ function listar() {
         });
 }
 
+
 async function dadosSteam() {
     fetch("/usuarios/pegarDadosSteam", {
         method: "GET",
-    }) 
+    })
         .then(function (resposta) {
-            if(resposta.ok) {
+            if (resposta.ok) {
                 console.log(resposta);
             }
         })
 } 
+

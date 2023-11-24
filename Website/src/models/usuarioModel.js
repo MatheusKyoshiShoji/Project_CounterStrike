@@ -16,7 +16,7 @@ function cadastrar(username, steamId, senha, idOrg) {
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
     var instrucao = `
-        INSERT INTO usuario (username, steamID, fkOrganizacao, senha) VALUES ('${username}', '${steamId}', '${senha}', '${idOrg}');
+        INSERT INTO usuario (username, steamID, senha, fkOrganizacao) VALUES ('${username}', '${steamId}', '${senha}', '${idOrg}');
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
