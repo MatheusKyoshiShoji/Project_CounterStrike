@@ -1,3 +1,65 @@
+// DATA STORAGE
+var partidas = sessionStorage.PARTIDAS;
+var partidasGanha = sessionStorage.PARTIDAS_GANHA 
+var roundsJogados = sessionStorage.ROUNDS_JOGADOS 
+var mvps = sessionStorage.MVP 
+var abates = sessionStorage.ABATES 
+var mortes = sessionStorage.MORTES 
+var danoCausado = sessionStorage.DANO_CAUSADO 
+var hs = sessionStorage.HS 
+var bombasPlantadas = sessionStorage.BOMBAS_PLANTADAS 
+var bombasDefusadas = sessionStorage.BOMBAS_DEFUSADAS 
+// DATA CALCULO
+var taxaVitoria = (partidasGanha / partidas) * 100;
+var taxaHs = (hs / abates) * 100;
+var adr = (danoCausado / roundsJogados).toFixed(0);
+var kd = abates / mortes;
+var kpr = abates / roundsJogados;
+var dpr = mortes / roundsJogados;
+var rating = (kpr + dpr + kd) / 3;
+console.log(kpr);
+console.log(dpr);
+console.log(rating);
+
+
+function exibirDados() {
+    var idPartidasGanhasPerfil = document.querySelector(".partidas-ganha-perfil")
+    var idPartidasGanhas = document.querySelector(".partidas-ganha")
+    idPartidasGanhasPerfil.innerHTML = `${partidasGanha}` 
+    idPartidasGanhas.innerHTML = `${partidasGanha}` 
+    var idTaxaVitoria = document.getElementById('taxa-vitoria')
+    idTaxaVitoria.innerHTML = `${taxaVitoria.toFixed(2)}%` 
+    var idPartidasJogadas = document.getElementById('partidas-jogadas')
+    idPartidasJogadas.innerHTML = `${partidas}` 
+    var idMvp = document.getElementById('mvps')
+    idMvp.innerHTML = `${mvps}` 
+    var idTaxaHs = document.getElementById('taxa-hs')
+    idTaxaHs.innerHTML = `${taxaHs.toFixed(2)}%` 
+    var idAbates = document.getElementById('abates')
+    idAbates.innerHTML = `${abates}` 
+    var idMortes = document.getElementById('mortes')
+    idMortes.innerHTML = `${mortes}` 
+    var idHs = document.getElementById('hs')
+    idHs.innerHTML = `${hs}` 
+    var idAdr = document.getElementById('adr')
+    idAdr.innerHTML = `${adr}` 
+    var idDanoCausado = document.getElementById('dano-causado')
+    idDanoCausado.innerHTML = `${danoCausado}` 
+    var idRoundsJogados = document.getElementById('rounds-jogado')
+    idRoundsJogados.innerHTML = `${roundsJogados}` 
+    var idBombasPlantadas = document.getElementById('bombas-plantadas')
+    idBombasPlantadas.innerHTML = `${bombasPlantadas}` 
+    var idBombasDefusadas = document.getElementById('bombas-defusadas')
+    idBombasDefusadas.innerHTML = `${bombasDefusadas}` 
+}
+
+document.addEventListener("DOMContentLoaded", () => { 
+    exibirDados();
+});
+
+
+// GRÁFICOS
+
 const ctxMapPlayed = document.getElementById('map_played').getContext('2d');
 const ctxWeapon = document.getElementById('weapon_used').getContext('2d');
 
@@ -127,7 +189,9 @@ const configWeapon = {
 
 const weaponChart = new Chart(ctxWeapon, configWeapon);
 
-const dataValueKd = [80, 20]
+// GRÁFICOS KD E Rating
+
+const dataValueKd = [kd.toFixed(2), kd.toFixed(2) - 1.5]
 const dataKd = {
     datasets: [{
         data: dataValueKd,
@@ -178,6 +242,10 @@ const configKd = {
             },
             legend: {
                 display: false
+            },
+            scales: {
+                suggestedMin: 0,
+                suggestedMax: 1.5,
             }
         }
     },
@@ -187,10 +255,10 @@ const configKd = {
 const ctxKd = document.getElementById('chart_kd').getContext('2d');
 const kdChart = new Chart(ctxKd, configKd);
 
-const dataValueDmr = [60, 40]
-const dataDmr = {
+const dataValueRating = [rating.toFixed(2), rating - 1.5]
+const dataRating = {
     datasets: [{
-        data: dataValueDmr,
+        data: dataValueRating,
         backgroundColor: ['rgb(113, 178, 76)', 'rgb(202, 81, 81)'],
         borderColor: ['rgb(113, 178, 76)', 'rgb(202, 81, 81)'],
         borderWidth: 1,
@@ -199,8 +267,8 @@ const dataDmr = {
     }]
 }
 
-const textoPorcentagemDmr = {
-    id: 'textoPorcentagemDmr',
+const textoPorcentagemRating = {
+    id: 'textoPorcentagemRating',
     afterDatasetsDraw(chart, args, pluginOptions) {
         const { ctx } = chart;
         ctx.save();
@@ -208,7 +276,7 @@ const textoPorcentagemDmr = {
         ctx.textBaseline = 'middle';
         ctx.font = 'bold 21px sans-serif';
         ctx.fillStyle = '#fff'
-        const texto = `${dataValueDmr[0]}`;
+        const texto = `${dataValueRating[0]}`;
         const textoWidth = ctx.measureText(texto).width
 
         const x = chart.getDatasetMeta(0).data[0].x;
@@ -218,15 +286,15 @@ const textoPorcentagemDmr = {
     }
 }
 
-const configDmr = {
+const configRating = {
     type: 'doughnut',
-    data: dataDmr,
+    data: dataRating,
     options: {
         aspectRatio: 1,
         plugins: {
             title: {
                 display: true,
-                text: 'DMR',
+                text: 'Rating',
                 color: '#fff',
                 font: {
                     size: 14,
@@ -241,11 +309,11 @@ const configDmr = {
             }
         }
     },
-    plugins: [textoPorcentagemDmr],
+    plugins: [textoPorcentagemRating],
 }
 
-const ctxDmr = document.getElementById('chart_Dmr').getContext('2d');
-const DmrChart = new Chart(ctxDmr, configDmr);
+const ctxRating = document.getElementById('chart_Rating').getContext('2d');
+const RatingChart = new Chart(ctxRating, configRating);
 
 
 const data = {

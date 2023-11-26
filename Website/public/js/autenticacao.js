@@ -1,4 +1,38 @@
+function dadosSteam(steamId) {
+    fetch(`/usuarios/pegarDadosSteam/${steamId}`, {
+        method: "GET",
+    })
+        .then(function (resposta) {
+            if (resposta.ok) {
+                console.log(resposta);
+                resposta.json().then((json) => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+                    sessionStorage.AVATAR_STEAM = json.fotoPerfil;
+                    sessionStorage.PARTIDAS = json.partiadas;
+                    sessionStorage.PARTIDAS_GANHA = json.partidasGanha;
+                    sessionStorage.ROUNDS_JOGADOS = json.roundsJogados;
+                    sessionStorage.MVP = json.melhorDaPartida;
+                    sessionStorage.ABATES = json.abates;
+                    sessionStorage.MORTES = json.mortes;
+                    sessionStorage.DANO_CAUSADO = json.danoCausado;
+                    sessionStorage.HS = json.tirosNaCabeca;
+                    sessionStorage.BOMBAS_PLANTADAS = json.bombasPlantada;
+                    sessionStorage.BOMBAS_DEFUSADAS = json.bombasDefusadas;
+                });
 
+                atualizarFoto();
+
+            }  else {
+                console.log("Houve um erro ao acessar o seu SteamID!");
+
+                resposta.text().then((texto) => {
+                    console.error(texto);
+                    /* finalizarAguardar(texto); */
+                });
+            }
+        })
+} 
 
 function entrar() {
 
@@ -41,6 +75,8 @@ function entrar() {
                     sessionStorage.ORG_USUARIO = json.idOrg;
                     sessionStorage.ID_USUARIO = json.idUsuario;
                     sessionStorage.QUIZ = JSON.stringify(json.quiz)
+
+                    dadosSteam(json.steamId);
 
                     setTimeout(function () {
                         window.location = "./profile/stats.html";
@@ -139,3 +175,7 @@ function listar() {
             console.log(`#ERRO: ${resposta}`);
         });
 }
+
+document.getElementById("autenticar").addEventListener("click", () => {
+    entrar();
+});

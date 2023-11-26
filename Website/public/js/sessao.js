@@ -20,28 +20,14 @@ function validarAutenticao() {
     }
 }
 
-async function dadosSteam(steamId) {
-    fetch(`/usuarios/pegarDadosSteam/${steamId}`, {
-        method: "GET",
-    })
-        .then(function (resposta) {
-            if (resposta.ok) {
-                console.log(resposta);
-                resposta.json().then((json) => {
-                    console.log(json);
-                    console.log(JSON.stringify(json));
-                    sessionStorage.AVATAR_STEAM = json.fotoPerfil;
-                });
-            }  else {
-                console.log("Houve um erro ao acessar o seu SteamID!");
+function atualizarFoto() {
+    var imgAvatar = document.getElementById('steam_avatar');
+    imgAvatar.src = `${avatarSteam}`
+    console.log("Alterou")
+}
 
-                resposta.text().then((texto) => {
-                    console.error(texto);
-                    /* finalizarAguardar(texto); */
-                });
-            }
-        })
-} 
+
+
 
 function exibirNomeOrg(idOrg) {
     fetch(`/org/buscar/${idOrg}`, {
@@ -51,8 +37,8 @@ function exibirNomeOrg(idOrg) {
             resposta.json().then(resposta => {
                 var imgOrg = document.getElementById('org_logo');
                 var nomeOrg = resposta[0].nomeOrg;
-
-                console.log(`Teste resposta: ${JSON.stringify(resposta)}`);
+/* 
+                console.log(`Teste resposta: ${JSON.stringify(resposta)}`); */
                 profile_org.innerHTML = `${nomeOrg}`
                 imgOrg.src = `../assets/img/Orgs/${nomeOrg}_logo.png`
 
@@ -70,20 +56,16 @@ function exibirPatente() {
 }
 
 
-
-function atualizarFoto(imgUrl) {
-    var imgAvatar = document.getElementById('steam_avatar');
-    imgAvatar.src = `${imgUrl}`
-}
-
+// FUNÇÕES ACIONADOS AO RECARREGAR A PÁGINA
 
 document.addEventListener("DOMContentLoaded", () => { 
     validarAutenticao();
     exibirNomeOrg(org);
-    exibirPatente();
-    dadosSteam(steamId);
-    atualizarFoto(avatarSteam)
+    exibirPatente();    
+    atualizarFoto()
 });
+
+
 
 function limparSessao() {
     sessionStorage.clear();

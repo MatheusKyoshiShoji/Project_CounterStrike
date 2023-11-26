@@ -16,7 +16,6 @@
 
     <title>Status</title>
 </head>
-<!-- onload="validarAutenticao(), dadosSteam()" -->
 <body >
     <div class="bg-image">
         <div class="container-menu">
@@ -32,7 +31,7 @@
                 <span class="vr"></span>
                 <div class="profile-stats">
                     <img src="../assets/img/Ranks/Prata1.png" alt="" class="rank-profile" id="rank_img"/>
-                    <p>Partidas vencidas: 300</p>
+                    <p>Partidas vencidas: <span class="partidas-ganha-perfil"> </span></p>
                 </div>
             </div>
             <div class="container-display">
@@ -53,26 +52,26 @@
                         <div class="column-stats">
                             <div class="row-stats">
                                 <div class="div-stats">
-                                    <h3>Taxa de vitória: <span> 56% </span></h3>
+                                    <h3>Taxa de vitória: <span id="taxa-vitoria">  </span></h3>
                                     <div class="text">
-                                        <p>Paritdas jogadas: <span>3989</span></p>
-                                        <p>Partidas ganhas: <span>1523</span></p>
-                                        <p>MVP: <span>1299</span></p>
+                                        <p>Paritdas jogadas: <span id="partidas-jogadas"></span></p>
+                                        <p>Partidas ganhas: <span class="partidas-ganha"></span></p>
+                                        <p>MVP: <span id="mvps"></span></p>
                                     </div>
                                 </div>
                                 <div class="div-stats">
-                                    <h3>HS%: <span> 51% </span></h3>
+                                    <h3>HS%: <span id="taxa-hs">  </span></h3>
                                     <div class="text">
-                                        <p>Abates: <span>102573</span></p>
-                                        <p>Mortes: <span>66977</span></p>
-                                        <p>Headshots: <span>43473</span></p>
+                                        <p>Abates: <span id="abates"></span></p>
+                                        <p>Mortes: <span id="mortes"></span></p>
+                                        <p>Headshots: <span id="hs"></span></p>
                                     </div>
                                 </div>
                                 <div class="div-stats">
-                                    <h3>ADR: <span> 60 </span></h3>
+                                    <h3>ADR: <span id="adr">  </span></h3>
                                     <div class="text">
-                                        <p>Dano causado: <span>1011661959</span></p>
-                                        <p>Rounds: <span>70621</span></p>
+                                        <p>Dano causado: <span id="dano-causado"></span></p>
+                                        <p>Rounds: <span id="rounds-jogado"></span></p>
                                     </div>
                                 </div>
                             </div>
@@ -87,14 +86,14 @@
                                 <div class="div-stats2">
                                     <div class="text">
                                         <h3>C4 Plantadas</h3>
-                                        <p>5000</p>
+                                        <p id="bombas-plantadas"></p>
                                     </div>
                                     <img src="https://files.catbox.moe/1ojl8n.png" alt="Map icon" />
                                 </div>
                                 <div class="div-stats2">
                                     <div class="text">
                                         <h3>C4 Defusadas</h3>
-                                        <p>1000</p>
+                                        <p id="bombas-defusadas"></p>
                                     </div>
                                     <img src="https://files.catbox.moe/nc8qe8.png" alt="Map icon" />
                                 </div>
@@ -115,7 +114,7 @@
                                 <canvas id="chart_kd"></canvas>
                             </div>
                             <div class="donut-chart">
-                                <canvas id="chart_Dmr"></canvas>
+                                <canvas id="chart_Rating"></canvas>
                             </div>
                         </div>
                         <div class="row-top">

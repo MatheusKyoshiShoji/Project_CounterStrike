@@ -33,7 +33,7 @@ function autenticar(req, res) {
                                     idOrg: resultadoAutenticar[0].idOrg,
                                     quiz: resultadoQuiz
                                 });
-                        })
+                            })
 
                     } else if (resultadoAutenticar.length == 0) {
                         res.status(403).send("username e/ou senha inválido(s)");
@@ -71,7 +71,7 @@ function cadastrar(req, res) {
     } else {
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(username, steamId , senha, idOrg)
+        usuarioModel.cadastrar(username, steamId, senha, idOrg)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -90,50 +90,50 @@ function cadastrar(req, res) {
 }
 
 async function pegarDadosSteam(req, res) {
-    var steamId =  req.params.steamId;
+    var steamId = req.params.steamId;
 
-    if(steamId == undefined) {
+    if (steamId == undefined) {
         res.status(400).send("Seu steamId está undefined!");
     } else {
         console.log("tome " + steamId);
-    }
+        const userSteam = await API.fetchUser(steamId, process.env.STEAM_TOKEN);
 
 
-    const userSteam = await API.fetchUser(steamId, process.env.STEAM_TOKEN);
+        var melhoresMapas = [];
 
-    var melhoresMapas = [];
-    
-    const { avatarfull } = userSteam.info();
-    const { kills, deaths, time_played, matches_played, matches_won, headshot_kills, 
-        mvps, damage_done, rounds_played, planted_bombs, defused_bombs } = userSteam.stats();
+        const { avatarfull } = userSteam.info();
+        const { kills, deaths, time_played, matches_played, matches_won, headshot_kills,
+            mvps, damage_done, rounds_played, planted_bombs, defused_bombs } = userSteam.stats();
 
-    console.log(kills, deaths, time_played);
-    console.log(avatarfull);
-    const maps = userSteam.maps();
-    const keys = Object.keys(maps);
-    for (const name of keys) {
-        const map = maps[name];
-        if (map.wr > 0.5 && map.played > 100) {
-            melhoresMapas.push(`${MAPS[name]}`);
-            console.log(`Wow you are pretty good in ${MAPS[name]} winning ${map.wr * 100}% of the rounds of ${map.played}!`)
+        console.log(kills, deaths, time_played);
+        console.log(avatarfull);
+        const maps = userSteam.maps();
+        const keys = Object.keys(maps);
+        for (const name of keys) {
+            const map = maps[name];
+            if (map.wr > 0.5 && map.played > 100) {
+                melhoresMapas.push(`${MAPS[name]}`);
+                console.log(`Wow you are pretty good in ${MAPS[name]} winning ${map.wr * 100}% of the rounds of ${map.played}!`)
+            }
         }
-    }
-    console.log(melhoresMapas);
+        console.log(melhoresMapas);
 
-    res.json({
-        fotoPerfil: avatarfull,
-        partiadas: matches_played,
-        partidasGanha: matches_won,
-        roundsJogados: rounds_played,
-        melhorDaPartida: mvps,
-        abates: kills,
-        mortes: deaths,
-        danoCausado: damage_done,
-        tirosNaCabeca: headshot_kills,
-        bombasPlantada: planted_bombs,
-        bombasDefusadas: defused_bombs
-    })
-} 
+        res.json({
+            fotoPerfil: avatarfull,
+            partiadas: matches_played,
+            partidasGanha: matches_won,
+            roundsJogados: rounds_played,
+            melhorDaPartida: mvps,
+            abates: kills,
+            mortes: deaths,
+            danoCausado: damage_done,
+            tirosNaCabeca: headshot_kills,
+            bombasPlantada: planted_bombs,
+            bombasDefusadas: defused_bombs
+        })
+    }
+
+}
 
 
 module.exports = {
