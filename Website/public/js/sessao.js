@@ -1,6 +1,7 @@
 var org = sessionStorage.ORG_USUARIO;
 var quizUsuario = sessionStorage.QUIZ;
 var steamId = sessionStorage.STEAMID_USUARIO;
+var avatarSteam = sessionStorage.AVATAR_STEAM;
 
 function limparSessao() {
     sessionStorage.clear();
@@ -19,13 +20,28 @@ function validarAutenticao() {
     }
 }
 
+async function dadosSteam(steamId) {
+    fetch(`/usuarios/pegarDadosSteam/${steamId}`, {
+        method: "GET",
+    })
+        .then(function (resposta) {
+            if (resposta.ok) {
+                console.log(resposta);
+                resposta.json().then((json) => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+                    sessionStorage.AVATAR_STEAM = json.fotoPerfil;
+                });
+            }  else {
+                console.log("Houve um erro ao acessar o seu SteamID!");
 
-function limparSessao() {
-    sessionStorage.clear();
-    window.location = "../login.html";
-}
-
-
+                resposta.text().then((texto) => {
+                    console.error(texto);
+                    /* finalizarAguardar(texto); */
+                });
+            }
+        })
+} 
 
 function exibirNomeOrg(idOrg) {
     fetch(`/org/buscar/${idOrg}`, {
@@ -55,16 +71,10 @@ function exibirPatente() {
 
 
 
-async function dadosSteam(steamId) {
-    fetch(`/usuarios/pegarDadosSteam/${steamId}`, {
-        method: "GET",
-    })
-        .then(function (resposta) {
-            if (resposta.ok) {
-                console.log(resposta);
-            }
-        })
-} 
+function atualizarFoto(imgUrl) {
+    var imgAvatar = document.getElementById('steam_avatar');
+    imgAvatar.src = `${imgUrl}`
+}
 
 
 document.addEventListener("DOMContentLoaded", () => { 
@@ -72,5 +82,10 @@ document.addEventListener("DOMContentLoaded", () => {
     exibirNomeOrg(org);
     exibirPatente();
     dadosSteam(steamId);
-
+    atualizarFoto(avatarSteam)
 });
+
+function limparSessao() {
+    sessionStorage.clear();
+    window.location = "../login.html";
+}

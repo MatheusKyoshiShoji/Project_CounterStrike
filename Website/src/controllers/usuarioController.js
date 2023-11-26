@@ -100,22 +100,39 @@ async function pegarDadosSteam(req, res) {
 
 
     const userSteam = await API.fetchUser(steamId, process.env.STEAM_TOKEN);
-    const { profilestate, personaname, profileurl } = userSteam.info();
-    const userInfo = [profilestate, personaname, profileurl];
-    const { kills, deaths, time_played } = userSteam.stats();
-    const {last_match_t_wins,  last_match_ct_wins, last_match_kills, last_match_deaths, last_match_mvps} = userSteam.lastMatch()
 
-    console.log(last_match_t_wins,  last_match_ct_wins, last_match_kills, last_match_deaths, last_match_mvps);
+    var melhoresMapas = [];
+    
+    const { avatarfull } = userSteam.info();
+    const { kills, deaths, time_played, matches_played, matches_won, headshot_kills, 
+        mvps, damage_done, rounds_played, planted_bombs, defused_bombs } = userSteam.stats();
+
     console.log(kills, deaths, time_played);
-    console.log(userInfo);
+    console.log(avatarfull);
     const maps = userSteam.maps();
     const keys = Object.keys(maps);
     for (const name of keys) {
         const map = maps[name];
         if (map.wr > 0.5 && map.played > 100) {
+            melhoresMapas.push(`${MAPS[name]}`);
             console.log(`Wow you are pretty good in ${MAPS[name]} winning ${map.wr * 100}% of the rounds of ${map.played}!`)
         }
     }
+    console.log(melhoresMapas);
+
+    res.json({
+        fotoPerfil: avatarfull,
+        partiadas: matches_played,
+        partidasGanha: matches_won,
+        roundsJogados: rounds_played,
+        melhorDaPartida: mvps,
+        abates: kills,
+        mortes: deaths,
+        danoCausado: damage_done,
+        tirosNaCabeca: headshot_kills,
+        bombasPlantada: planted_bombs,
+        bombasDefusadas: defused_bombs
+    })
 } 
 
 

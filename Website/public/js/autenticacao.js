@@ -1,3 +1,5 @@
+
+
 function entrar() {
 
     var usernameVar = input_username.value;
@@ -44,6 +46,8 @@ function entrar() {
                         window.location = "./profile/stats.html";
                     }, 1000); // apenas para exibir o loading
                 });
+
+                
             } else {
                 console.log("Houve um erro ao tentar realizar o login!");
 
@@ -59,6 +63,7 @@ function entrar() {
 
     return false;
 }
+
 
 function cadastrar() {
     //Recupere o valor da nova input pelo nome do id
