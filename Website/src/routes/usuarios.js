@@ -12,7 +12,7 @@ router.post("/autenticar", function (req, res) {
     usuarioController.autenticar(req, res);
 });
 
-router.get('/pegarDadosSteam', function (req, res) {
+router.get('/pegarDadosSteam/:steamId', function (req, res) {
     usuarioController.pegarDadosSteam(req, res);
 }); 
     

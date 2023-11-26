@@ -90,16 +90,16 @@ function cadastrar(req, res) {
 }
 
 async function pegarDadosSteam(req, res) {
-    var steamId =  req.body.steamIdServer;
+    var steamId =  req.params.steamId;
 
     if(steamId == undefined) {
         res.status(400).send("Seu steamId está undefined!");
     } else {
-        console.log("tome");
+        console.log("tome " + steamId);
     }
 
 
-    const userSteam = await API.fetchUser('matheusshoji', process.env.STEAM_TOKEN);
+    const userSteam = await API.fetchUser(steamId, process.env.STEAM_TOKEN);
     const { profilestate, personaname, profileurl } = userSteam.info();
     const userInfo = [profilestate, personaname, profileurl];
     const { kills, deaths, time_played } = userSteam.stats();

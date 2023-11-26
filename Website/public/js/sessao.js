@@ -1,5 +1,6 @@
 var org = sessionStorage.ORG_USUARIO;
 var quizUsuario = sessionStorage.QUIZ;
+var steamId = sessionStorage.STEAMID_USUARIO;
 
 function limparSessao() {
     sessionStorage.clear();
@@ -54,8 +55,8 @@ function exibirPatente() {
 
 
 
-async function dadosSteam() {
-    fetch("/usuarios/pegarDadosSteam", {
+async function dadosSteam(steamId) {
+    fetch(`/usuarios/pegarDadosSteam/${steamId}`, {
         method: "GET",
     })
         .then(function (resposta) {
@@ -70,6 +71,6 @@ document.addEventListener("DOMContentLoaded", () => {
     validarAutenticao();
     exibirNomeOrg(org);
     exibirPatente();
-    dadosSteam();
+    dadosSteam(steamId);
 
 });
