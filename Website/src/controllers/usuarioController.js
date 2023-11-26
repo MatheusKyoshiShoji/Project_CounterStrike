@@ -98,25 +98,49 @@ async function pegarDadosSteam(req, res) {
         console.log("tome " + steamId);
         const userSteam = await API.fetchUser(steamId, process.env.STEAM_TOKEN);
 
+        var listaMelhoresMapas = [];
+        var listamelhoresMapasWr = [];
 
-        var melhoresMapas = [];
 
         const { avatarfull } = userSteam.info();
-        const { kills, deaths, time_played, matches_played, matches_won, headshot_kills,
+        const { kills, deaths, matches_played, matches_won, headshot_kills,
             mvps, damage_done, rounds_played, planted_bombs, defused_bombs } = userSteam.stats();
 
-        console.log(kills, deaths, time_played);
-        console.log(avatarfull);
         const maps = userSteam.maps();
         const keys = Object.keys(maps);
         for (const name of keys) {
             const map = maps[name];
             if (map.wr > 0.5 && map.played > 100) {
-                melhoresMapas.push(`${MAPS[name]}`);
-                console.log(`Wow you are pretty good in ${MAPS[name]} winning ${map.wr * 100}% of the rounds of ${map.played}!`)
+                listaMelhoresMapas.push(`${MAPS[name]}`);
+                listamelhoresMapasWr.push(map.wr * 100);
             }
         }
-        console.log(melhoresMapas);
+
+        var maiorNumeroDaLista = listamelhoresMapasWr[0];
+        var menorNumeroDaLista = listamelhoresMapasWr[0];
+        var melhorMapaLista = listaMelhoresMapas[0];
+        var piorMapaLista = listaMelhoresMapas[0];
+
+        for(var i = 0; i < listaMelhoresMapas.length; i++) {
+            var wrAtual = listamelhoresMapasWr[i];
+            var mapaAtual = listaMelhoresMapas[i];
+            if(wrAtual < menorNumeroDaLista) {
+                menorNumeroDaLista = wrAtual;
+                piorMapaLista = mapaAtual;
+            } 
+
+            if(wrAtual > maiorNumeroDaLista) {
+                maiorNumeroDaLista = wrAtual;
+                melhorMapaLista = mapaAtual;
+            }
+        }
+
+/*         console.log(listaMelhoresMapas);
+        console.log(listamelhoresMapasWr);
+        console.log(maiorNumeroDaLista);
+        console.log(melhorMapaLista);
+        console.log(menorNumeroDaLista);
+        console.log(piorMapaLista); */
 
         res.json({
             fotoPerfil: avatarfull,
@@ -129,7 +153,11 @@ async function pegarDadosSteam(req, res) {
             danoCausado: damage_done,
             tirosNaCabeca: headshot_kills,
             bombasPlantada: planted_bombs,
-            bombasDefusadas: defused_bombs
+            bombasDefusadas: defused_bombs,
+            melhoresMapa: listaMelhoresMapas,
+            melhoresMapaWr: listamelhoresMapasWr,
+            melhorMapa: melhorMapaLista,
+            piorMapa: piorMapaLista
         })
     }
 

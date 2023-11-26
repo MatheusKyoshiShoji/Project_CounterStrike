@@ -17,10 +17,6 @@ var kd = abates / mortes;
 var kpr = abates / roundsJogados;
 var dpr = mortes / roundsJogados;
 var rating = (kpr + dpr + kd) / 3;
-console.log(kpr);
-console.log(dpr);
-console.log(rating);
-
 
 function exibirDados() {
     var idPartidasGanhasPerfil = document.querySelector(".partidas-ganha-perfil")
