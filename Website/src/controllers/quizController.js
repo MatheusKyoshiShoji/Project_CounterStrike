@@ -16,7 +16,7 @@ function resultado(req, res) {
         res.status(400).send("Sua fkUsuario está undefined!");
     } else {
         quizModel.resultado(tentativas, acerto, patente, fkUsuario)
-            .then(function(resultado) {
+            .then(function (resultado) {
                 res.json(resultado);
             }).catch(
                 function (erro) {
@@ -27,10 +27,27 @@ function resultado(req, res) {
                     );
                     res.status(500).json(erro.sqlMessage);
                 }
-        );
+            );
     }
+}
+
+function buscarResulatoQuizUsuario(req, res) {
+    var idUsuario = req.params.idUsuario;
+
+    quizModel.buscarResulatoQuizUsuario(idUsuario).then((resultado) => {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).json([]);
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar os quiz: ", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    })
 }
 
 module.exports = {
     resultado,
+    buscarResulatoQuizUsuario
 }

@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="../js/sessao.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -11,12 +12,12 @@
     <link rel="stylesheet" href="../css/stats.css" />
     <link rel="stylesheet" href="../css/dashboard.css" />
     <link rel="stylesheet" href="../css/pesquisa.css" />
-    <script src="../js/sessao.js"></script>
+    
 
     <title>Status</title>
 </head>
-
-<body onload="validarAutenticao()/* , dadosSteam()   */">
+<!-- onload="validarAutenticao(), dadosSteam()" -->
+<body >
     <div class="bg-image">
         <div class="container-menu">
             <div class="header-profile">
@@ -26,11 +27,11 @@
                         <p id="profile_username">Username</p>
                         <span id="profile_org"> Nome time </span>
                     </div>
-                    <img src="https://files.catbox.moe/7imzin.png" alt="Team logo" class="team-pic" />
+                    <img src="" alt="Team logo" class="team-pic" id="org_logo"/>
                 </div>
                 <span class="vr"></span>
                 <div class="profile-stats">
-                    <img src="../assets/img/rank_guardian.png" alt="" class="rank-profile" />
+                    <img src="../assets/img/Ranks/Prata1.png" alt="" class="rank-profile" id="rank_img"/>
                     <p>Partidas vencidas: 300</p>
                 </div>
             </div>

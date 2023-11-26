@@ -1,6 +1,12 @@
 CREATE DATABASE projectCS;
 USE projectCS;
 
+
+CREATE TABLE organizacao (
+	idOrg int primary key auto_increment,
+    nomeOrg VARCHAR(45)
+);
+
 CREATE TABLE usuario (
 	idUsuario int primary key auto_increment,
     username VARCHAR(45) UNIQUE NOT NULL,
@@ -8,11 +14,6 @@ CREATE TABLE usuario (
     senha VARCHAR(225) NOT NULL,
     fkOrganizacao INT,
     constraint fkOrg foreign key usuario(fkOrganizacao) references organizacao(idOrg) 
-);
-
-CREATE TABLE organizacao (
-	idOrg int primary key auto_increment,
-    nomeOrg VARCHAR(45)
 );
 
 CREATE TABLE quiz (
@@ -38,6 +39,8 @@ INSERT INTO organizacao VALUES
 SELECT * FROM organizacao;
 SELECT * FROM usuario;
 select * from organizacao where idOrg = 2;
+SELECT * FROM quiz;
+SELECT * FROM quiz WHERE fkUsuario = 2;
 
 INSERT INTO usuario (username, steamID, senha, fkOrganizacao) VALUES 
 	('MKS_Shoji', 'matheusshoji', 'mks_123', 1);

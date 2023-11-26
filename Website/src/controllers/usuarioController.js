@@ -2,6 +2,7 @@ const { API } = require('csgo.js');
 const { MAPS } = require("csgo.js");
 require('dotenv').config();
 var usuarioModel = require("../models/usuarioModel");
+var quizModel = require("../models/quizModel")
 
 function autenticar(req, res) {
     var username = req.body.usernameServer;
@@ -21,13 +22,18 @@ function autenticar(req, res) {
 
                     if (resultadoAutenticar.length == 1) {
                         console.log(resultadoAutenticar);
-                        res.json({
-                            idUsuario: resultadoAutenticar[0].idUsuario,
-                            username: resultadoAutenticar[0].username,
-                            steamId: resultadoAutenticar[0].steamId,
-                            senha: resultadoAutenticar[0].senha,
-                            idOrg: resultadoAutenticar[0].idOrg
-                        });
+
+                        quizModel.buscarResulatoQuizUsuario(resultadoAutenticar[0].idUsuario)
+                            .then((resultadoQuiz) => {
+                                res.json({
+                                    idUsuario: resultadoAutenticar[0].idUsuario,
+                                    username: resultadoAutenticar[0].username,
+                                    steamId: resultadoAutenticar[0].steamId,
+                                    senha: resultadoAutenticar[0].senha,
+                                    idOrg: resultadoAutenticar[0].idOrg,
+                                    quiz: resultadoQuiz
+                                });
+                        })
 
                     } else if (resultadoAutenticar.length == 0) {
                         res.status(403).send("username e/ou senha inválido(s)");

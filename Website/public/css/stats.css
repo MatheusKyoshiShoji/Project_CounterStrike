@@ -1,7 +1,7 @@
 @import url(main.css);
 
 .bg-image {
-    background: var(--filter-color), url(../img/hero.jpeg);
+    background: var(--filter-color), url(../assets/img/hero.jpeg);
     height: 100%;
     background-position: center;
     background-size: cover;

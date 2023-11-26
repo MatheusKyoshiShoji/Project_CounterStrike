@@ -132,7 +132,7 @@ function finalizaQuiz() {
 
 function resultadoQuiz() {
     var listaPatente = ['Prata1', 'Prata1', 'Prata1', 'Prata2', 'Prata3', 'Prata4', 'Prata5', 'Prata6', 'Ouro1', 'Ouro2', 'Ouro3',
-        'Ouro4', 'AK1', 'AK2', 'AK3', 'Xerifie', 'Aguia1', 'Aguia2', 'Supremo', 'Supremo', 'Global'];
+        'Ouro4', 'AK1', 'AK2', 'AK3', 'Xerife', 'Aguia1', 'Aguia2', 'Supremo', 'Supremo', 'Global'];
     resultadoBox.querySelector(".total-question").innerHTML = quiz.length;
     resultadoBox.querySelector(".total-attempt").innerHTML = tentativas;
     resultadoBox.querySelector(".total-correct").innerHTML = respostaCorretas
@@ -164,11 +164,14 @@ function resultadoQuiz() {
             console.log("resposta: ", resposta);
 
             if (resposta.ok) {
-                alert("Quiz realizado com sucesso!")
+                alert("Quiz finalizado com sucesso!")
 
                 setTimeout(() => {
-                    alert("Foi");
-                }, "2000");
+                    var imgRank = document.getElementById('rank_img');
+                    /*         console.log(item.idQuiz, item.tentativas, item.patente); */
+                    imgRank.src = `../assets/img/Ranks/${listaPatente[respostaCorretas]}.png`
+                    alert("Atualizou")
+                }, 2000);
 
             } else {
                 throw "Houve um erro ao tentar realizar o cadastro!";

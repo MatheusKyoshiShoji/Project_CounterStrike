@@ -13,7 +13,16 @@ function resultado(tentativas, acerto, patente, fkUsuario) {
     return database.executar(instrucao);
 }
 
+function buscarResulatoQuizUsuario(idUsuario) {
+
+    instrucaoSql = `select * from quiz where fkUsuario = ${idUsuario}`;
+  
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+  }
+
 
 module.exports = {
     resultado,
+    buscarResulatoQuizUsuario
 };
