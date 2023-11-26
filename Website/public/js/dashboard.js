@@ -9,6 +9,10 @@ var danoCausado = sessionStorage.DANO_CAUSADO
 var hs = sessionStorage.HS 
 var bombasPlantadas = sessionStorage.BOMBAS_PLANTADAS 
 var bombasDefusadas = sessionStorage.BOMBAS_DEFUSADAS 
+var melhoresMapas = sessionStorage.MELHORES_MAPA 
+var mapasWr = sessionStorage.MELHORES_MAPA_WR 
+var melhorMapa = sessionStorage.MELHOR_MAPA 
+var piorMapa = sessionStorage.PIOR_MAPA 
 // DATA CALCULO
 var taxaVitoria = (partidasGanha / partidas) * 100;
 var taxaHs = (hs / abates) * 100;
@@ -17,6 +21,9 @@ var kd = abates / mortes;
 var kpr = abates / roundsJogados;
 var dpr = mortes / roundsJogados;
 var rating = (kpr + dpr + kd) / 3;
+
+console.log(melhoresMapas);
+console.log(typeof mapasWr == "string");
 
 function exibirDados() {
     var idPartidasGanhasPerfil = document.querySelector(".partidas-ganha-perfil")
@@ -47,6 +54,11 @@ function exibirDados() {
     idBombasPlantadas.innerHTML = `${bombasPlantadas}` 
     var idBombasDefusadas = document.getElementById('bombas-defusadas')
     idBombasDefusadas.innerHTML = `${bombasDefusadas}` 
+    var idMapaFavorito = document.getElementById('mapa-favorito')
+    idMapaFavorito.innerHTML = `${melhorMapa}` 
+
+    var imgMapaFavorito = document.getElementById('mapa-favorito-img');
+    imgMapaFavorito.src = `../assets/img/Maps/${melhorMapa}_logo.png`
 }
 
 document.addEventListener("DOMContentLoaded", () => { 
@@ -65,12 +77,9 @@ const dataMap = {
         'Overpass',
         'Dust 2',
         'Vertigo',
-        'Inferno',
-        'Anubis',
-        'Ancient'
     ],
     datasets: [{
-        data: [72, 74, 85, 81, 70, 60, 70],
+        data: mapasWr,
         fill: true,
         backgroundColor: 'rgba(53, 97, 44, 0.6)',
         borderColor: 'rgb(62, 207, 68)',

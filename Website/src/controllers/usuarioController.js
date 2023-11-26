@@ -90,77 +90,75 @@ function cadastrar(req, res) {
 }
 
 async function pegarDadosSteam(req, res) {
-    var steamId = req.params.steamId;
+    try {
+        var steamId = req.params.steamId;
 
-    if (steamId == undefined) {
-        res.status(400).send("Seu steamId está undefined!");
-    } else {
-        console.log("tome " + steamId);
-        const userSteam = await API.fetchUser(steamId, process.env.STEAM_TOKEN);
+        if (steamId == undefined) {
+            res.status(400).send("Seu steamId está undefined!");
+        } else {
+            console.log("tome " + steamId);
+            const userSteam = await API.fetchUser(steamId, process.env.STEAM_TOKEN);
 
-        var listaMelhoresMapas = [];
-        var listamelhoresMapasWr = [];
+            const { avatarfull } = userSteam.info();
+            const { kills, deaths, matches_played, matches_won, headshot_kills,
+                mvps, damage_done, rounds_played, planted_bombs, defused_bombs } = userSteam.stats();
 
-
-        const { avatarfull } = userSteam.info();
-        const { kills, deaths, matches_played, matches_won, headshot_kills,
-            mvps, damage_done, rounds_played, planted_bombs, defused_bombs } = userSteam.stats();
-
-        const maps = userSteam.maps();
-        const keys = Object.keys(maps);
-        for (const name of keys) {
-            const map = maps[name];
-            if (map.wr > 0.5 && map.played > 100) {
-                listaMelhoresMapas.push(`${MAPS[name]}`);
-                listamelhoresMapasWr.push(map.wr * 100);
+            var listaMelhoresMapas = [];
+            var listaMelhoresMapasWr = [];
+            
+            const maps = userSteam.maps();
+            const keys = Object.keys(maps);
+            for (const name of keys) {
+                const map = maps[name];
+                var mapWinrate = map.wr * 100;
+                if (map.wr > 0.5 && map.played > 100) {
+                    listaMelhoresMapas.push(`${MAPS[name]}`);
+                    listaMelhoresMapasWr.push(parseInt(mapWinrate));
+                }
             }
-        }
 
-        var maiorNumeroDaLista = listamelhoresMapasWr[0];
-        var menorNumeroDaLista = listamelhoresMapasWr[0];
-        var melhorMapaLista = listaMelhoresMapas[0];
-        var piorMapaLista = listaMelhoresMapas[0];
+            var maiorNumeroDaLista = listaMelhoresMapasWr[0];
+            var menorNumeroDaLista = listaMelhoresMapasWr[0];
+            var melhorMapaLista = listaMelhoresMapas[0];
+            var piorMapaLista = listaMelhoresMapas[0];
 
-        for(var i = 0; i < listaMelhoresMapas.length; i++) {
-            var wrAtual = listamelhoresMapasWr[i];
-            var mapaAtual = listaMelhoresMapas[i];
-            if(wrAtual < menorNumeroDaLista) {
-                menorNumeroDaLista = wrAtual;
-                piorMapaLista = mapaAtual;
-            } 
+            for (var i = 0; i < listaMelhoresMapas.length; i++) {
+                var wrAtual = listaMelhoresMapasWr[i];
+                var mapaAtual = listaMelhoresMapas[i];
+                if (wrAtual < menorNumeroDaLista) {
+                    menorNumeroDaLista = wrAtual;
+                    piorMapaLista = mapaAtual;
+                }
 
-            if(wrAtual > maiorNumeroDaLista) {
-                maiorNumeroDaLista = wrAtual;
-                melhorMapaLista = mapaAtual;
+                if (wrAtual > maiorNumeroDaLista) {
+                    maiorNumeroDaLista = wrAtual;
+                    melhorMapaLista = mapaAtual;
+                }
             }
+
+            res.json({
+                fotoPerfil: avatarfull,
+                partiadas: matches_played,
+                partidasGanha: matches_won,
+                roundsJogados: rounds_played,
+                melhorDaPartida: mvps,
+                abates: kills,
+                mortes: deaths,
+                danoCausado: damage_done,
+                tirosNaCabeca: headshot_kills,
+                bombasPlantada: planted_bombs,
+                bombasDefusadas: defused_bombs,
+                listaMelhoresMapas,
+                listaMelhoresMapasWr,
+                melhorMapa: melhorMapaLista,
+                piorMapa: piorMapaLista
+            })
         }
-
-/*         console.log(listaMelhoresMapas);
-        console.log(listamelhoresMapasWr);
-        console.log(maiorNumeroDaLista);
-        console.log(melhorMapaLista);
-        console.log(menorNumeroDaLista);
-        console.log(piorMapaLista); */
-
-        res.json({
-            fotoPerfil: avatarfull,
-            partiadas: matches_played,
-            partidasGanha: matches_won,
-            roundsJogados: rounds_played,
-            melhorDaPartida: mvps,
-            abates: kills,
-            mortes: deaths,
-            danoCausado: damage_done,
-            tirosNaCabeca: headshot_kills,
-            bombasPlantada: planted_bombs,
-            bombasDefusadas: defused_bombs,
-            melhoresMapa: listaMelhoresMapas,
-            melhoresMapaWr: listamelhoresMapasWr,
-            melhorMapa: melhorMapaLista,
-            piorMapa: piorMapaLista
-        })
+    } catch (error) {
+        console.error("Erro ao pegar dados do Steam:", error);
+        res.status(500).send("Erro interno ao processar a solicitação.");
     }
-
+    
 }
 
 

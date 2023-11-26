@@ -38,9 +38,9 @@ INSERT INTO organizacao VALUES
     
 SELECT * FROM organizacao;
 SELECT * FROM usuario;
-select * from organizacao where idOrg = 2;
+select * from organizacao where idOrg = 3;
 SELECT * FROM quiz;
-SELECT * FROM quiz WHERE fkUsuario = 2;
+SELECT * FROM quiz JOIN usuario ON fkUsuario = idUsuario WHERE fkUsuario = 3;
 
 INSERT INTO usuario (username, steamID, senha, fkOrganizacao) VALUES 
 	('MKS_Shoji', 'matheusshoji', 'mks_123', 1);

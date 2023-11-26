@@ -6,8 +6,6 @@ function dadosSteam(steamId) {
             if (resposta.ok) {
                 console.log(resposta);
                 resposta.json().then((json) => {
-                    console.log(json);
-                    console.log(JSON.stringify(json));
                     sessionStorage.AVATAR_STEAM = json.fotoPerfil;
                     sessionStorage.PARTIDAS = json.partiadas;
                     sessionStorage.PARTIDAS_GANHA = json.partidasGanha;
@@ -19,6 +17,10 @@ function dadosSteam(steamId) {
                     sessionStorage.HS = json.tirosNaCabeca;
                     sessionStorage.BOMBAS_PLANTADAS = json.bombasPlantada;
                     sessionStorage.BOMBAS_DEFUSADAS = json.bombasDefusadas;
+                    sessionStorage.MELHORES_MAPA = json.listaMelhoresMapas;
+                    sessionStorage.MELHORES_MAPA_WR = json.listaMelhoresMapasWr;
+                    sessionStorage.MELHOR_MAPA = json.melhorMapa;
+                    sessionStorage.PIOR_MAPA = json.piorMapa;
                 });
 
                 atualizarFoto();
