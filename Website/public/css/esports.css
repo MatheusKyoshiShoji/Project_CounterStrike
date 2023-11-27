@@ -1,0 +1,15 @@
+@import url(main.css);
+@import url(components.css);
+
+.hero {
+    font-family: var(--font-text);
+    color: var(--font-primary-color);
+    font-size: 1em;
+    height: 100vh;
+    background-image: linear-gradient(80deg, rgba(22, 27, 46, 0.9) 0%, rgba(18, 24, 46, 0.9) 61%, rgba(19, 27, 47, 0.9) 100%), url(../assets/img/bg_esport.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+

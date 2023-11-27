@@ -213,7 +213,7 @@ footer {
     left: -275px;
     top: -30px;
     transform: rotate(50deg);
-    transition: all .4s ease-in-out;
+    transition: all .3s ease-in-out;
 }
 
 .btn-form p {

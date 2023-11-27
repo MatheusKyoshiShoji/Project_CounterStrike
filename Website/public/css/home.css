@@ -15,21 +15,6 @@
     position: relative;
 }
 
-.section-hero {
-    width: 100%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-h1 {
-    color: var(--font-primary-color);
-    font-weight: 700;
-    font-family: csFont;
-    font-size: 1.5em;
-}
-
 .hero-text p{
     width: 50%;
     text-align: justify;

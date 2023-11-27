@@ -40,6 +40,7 @@ function entrar() {
 
     var usernameVar = input_username.value;
     var senhaVar = input_senha.value;
+    var audio = document.getElementById("loginAudio")
 
     if (usernameVar == "" || senhaVar == "") {
         /* cardErro.style.display = "block"; */
@@ -65,10 +66,9 @@ function entrar() {
     })
         .then(function (resposta) {
             console.log("ESTOU NO THEN DO entrar()!");
-
             if (resposta.ok) {
                 console.log(resposta);
-
+                audio.play();
                 resposta.json().then((json) => {
                     console.log(json);
                     console.log(JSON.stringify(json));
@@ -79,10 +79,10 @@ function entrar() {
                     sessionStorage.QUIZ = JSON.stringify(json.quiz)
 
                     dadosSteam(json.steamId);
-
                     setTimeout(function () {
+                        
                         window.location = "./profile/stats.html";
-                    }, 1000); // apenas para exibir o loading
+                    }, 3000); // apenas para exibir o loading
                 });
 
                 

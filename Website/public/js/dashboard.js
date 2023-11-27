@@ -23,7 +23,7 @@ var dpr = mortes / roundsJogados;
 var rating = (kpr + dpr + kd) / 3;
 
 console.log(melhoresMapas);
-console.log(typeof mapasWr == "string");
+console.log(mapasWr);
 
 function exibirDados() {
     var idPartidasGanhasPerfil = document.querySelector(".partidas-ganha-perfil")
