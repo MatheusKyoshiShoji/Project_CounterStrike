@@ -14,7 +14,7 @@
 }
 
 .container-text{
-    width: 50%;
+    width: 45%;
     text-align: justify;
     font-size: 0.8em;
 }
@@ -24,12 +24,11 @@
     background-repeat: no-repeat;
     background-position: bottom right;
     background-size: 100%, auto;
-    height: 70vh;
+    height: 60vh;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding-left: 10%;
-
 }
 
 .section-sobre .container-text{
@@ -53,4 +52,191 @@
 .section-sobre img {
     width: 100%;
     height: 100%;
+}
+
+.section-cs_eSports {
+    padding: 2rem 10%;
+    background: var(--bg-form-color);
+    color: var(--font-primary-color);
+}
+
+.section-cs_eSports h1 {
+    text-align: center;
+    color: var(--secondary-color);
+}
+
+.container-cs_eSports .container-image {
+    width: 50%;
+    height: 70%;
+}
+
+.container-cs_eSports .container-image img {
+    height: 100%;
+    width: 100%;
+}
+
+.container-cs_eSports {
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.container-cs_eSports .grid-topics {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 1rem;
+    grid-row-gap: 1rem;
+    width: 60%;
+    height: 70%;
+    
+}
+
+.container-topics {
+    border: 2px solid var(--primary-color);
+    padding: 1rem;
+    text-align: justify;
+    font-size: 0.8em;
+    line-height: 1.5em;
+}
+
+.container-topics .divider {
+    margin: 10px 0;
+}
+
+.section-brasil {
+    background-image: var(--filter-color), url(../assets/img/lg_team.jpg);
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    height: 70vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 10%;
+}
+
+.section-brasil .container-text {
+    color: var(--font-primary-color);
+}
+
+.container-video {
+    height: 100%;
+    width: 45%;
+}
+
+.video-brasil {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.section-conquistas {
+    padding: 2rem 10%;
+    background: var(--bg-form-color);
+    color: var(--font-primary-color);
+}
+
+.section-conquistas h1 {
+    text-align: center;
+    color: var(--secondary-color);
+}
+
+.section-conquistas .container-box {
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.section-conquistas .container-box .box-major {
+    height: 80%;
+    width: 50%;
+    background: url(../assets/img/iem_rio.webp);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.container-major {
+    padding: 1rem;
+    background-color: var(--secondary-color);
+}
+
+.box-conquista-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 80%;
+    width: 50%;
+}
+
+.section-conquistas .container-box .box-conquista-column .box-conquista {
+    padding-left: 1rem;
+    background-color: var(--primary-color-dark);
+    height: 45%;
+    width: 100%;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.box-conquista img {
+    height: 100%;
+    width: 45%;
+    background: var(--filter-color);
+    border-radius: 0px 20px 20px 0px;
+    opacity: 0.8;
+}
+
+.section-importancia {
+    padding: 2rem 10%;
+    background-color: whitesmoke;
+}
+
+.section-importancia .text-center {
+    text-align: center;
+    color: var(--font-secondary-color);
+}
+
+.section-importancia h2 {
+    margin: 20px 0;
+    font-family: var(--font-title);
+    font-size: 1em;
+}
+
+.container-testimonials {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 90vh;
+    width: 100%;
+}
+
+.card-testimonial {
+    height: 100%;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--secondary-color);
+}
+
+.card-testimonial img {
+    height: 40%;
+    width: 100%;
+}
+
+.card-testimonial .card-text {
+    height: 60%;
+    background-color: var(--primary-color);
+    color: var(--font-primary-color);
+    padding: 1rem;
+    text-align: justify;
+    font-size: 0.8em;
+    line-height: 1.5em;
 }

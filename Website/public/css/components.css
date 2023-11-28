@@ -1,5 +1,6 @@
 footer {
     background: var(--bg-color);
+    color: var(--font-primary-color);
     gap: 2rem;
     padding: 2rem 10%;
     display: flex;
@@ -14,7 +15,8 @@ footer {
 
 
 .divider {
-    border-top: 1px solid var(--font-secondary-color);
+    /* border-top: 1px solid var(--font-secondary-color); */
+    color: var(--font-primary-color);
 }
 
 .div-copyright {
@@ -34,6 +36,7 @@ footer {
     padding: 1rem;
     background: var(--card-color);
     border-radius: 5px;
+    color: var(--font-primary-color);
 }
 
 .card h3 {
@@ -113,6 +116,7 @@ footer {
     padding: 1rem;
     font-size: 1em;
     background-color: var(--font-secondary-color);
+    color: var(--font-primary-color);
     cursor: pointer;
     transition: 0.2s ease-in-out;
 }

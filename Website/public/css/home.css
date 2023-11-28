@@ -145,7 +145,8 @@
 /* Seção action */
 
 .section-action {
-    background-image: var(--filter-color), url(../assets/img/cs_agents_bg.jpeg);
+    background-image: var(--filter-color), url(../assets/img/cs_agents_bg.jpeg); 
+    /* background: var(--bg-form-color); */
     background-position: right;
     background-repeat: no-repeat;
     background-size: cover;
@@ -160,6 +161,7 @@
 .section-action img {
     height: 70%;
     width: 55%;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
 /* Section steam */
