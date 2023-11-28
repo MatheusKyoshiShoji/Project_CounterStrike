@@ -76,7 +76,7 @@
 }
 
 .container-cs_eSports {
-    height: 70vh;
+    height: 80vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -89,7 +89,7 @@
     grid-template-rows: repeat(2, 1fr);
     grid-column-gap: 1rem;
     grid-row-gap: 1rem;
-    width: 60%;
+    width: 50%;
     height: 70%;
     
 }
@@ -98,7 +98,7 @@
     border: 2px solid var(--primary-color);
     padding: 1rem;
     text-align: justify;
-    font-size: 0.8em;
+    font-size: 0.7em;
     line-height: 1.5em;
 }
 
@@ -142,7 +142,6 @@
 
 .section-conquistas h1 {
     text-align: center;
-    color: var(--secondary-color);
 }
 
 .section-conquistas .container-box {
@@ -160,11 +159,14 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    position: relative;
 }
 
 .container-major {
     padding: 1rem;
     background-color: var(--secondary-color);
+    position: absolute;
+    bottom: 0;
 }
 
 .box-conquista-column {
@@ -227,16 +229,16 @@
 }
 
 .card-testimonial img {
-    height: 40%;
+    height: 35%;
     width: 100%;
 }
 
 .card-testimonial .card-text {
-    height: 60%;
+    height: 65%;
     background-color: var(--primary-color);
     color: var(--font-primary-color);
     padding: 1rem;
     text-align: justify;
-    font-size: 0.8em;
+    font-size: 0.7em;
     line-height: 1.5em;
 }

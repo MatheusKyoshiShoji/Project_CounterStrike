@@ -111,17 +111,16 @@ function cadastrar() {
     var steamIdVar = input_steam.value;
     var senhaConfirma = input_senhaConfirma.value;
     var organizacaoVar = listaorganizacao.value;
-    console.log(usernameVar);
-    console.log(senhaVar);
-    console.log(steamIdVar);
-    console.log(organizacaoVar);
-    console.log(senhaConfirma);
+
+    var regexUsername =  /^[a-zA-Z0-9]+$/;
+    
+
     if (usernameVar == "" || steamIdVar == "" || senhaVar == "" || organizacaoVar == "" || senhaConfirma == "") {
-        alert("(Mensagem de erro para todos os campos em branco)");
+        alert("Todos os campos devem estar preenchidos");
         return false;
-    } /* else {
-        setInterval(sumirMensagem, 5000);
-    } */
+    } else if(usernameVar.lenght < 4 && usernameVar.indexOf('')) {
+        
+    }
 
     // Enviando o valor da nova input
     fetch("/usuarios/cadastrar", {

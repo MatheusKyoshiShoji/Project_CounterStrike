@@ -1,5 +1,9 @@
 @import url(main.css);
 
+* {
+    color: var(--font-primary-color);
+}
+
 .bg-image {
     background: var(--filter-color), url(../assets/img/hero.jpeg);
     height: 100%;

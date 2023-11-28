@@ -16,7 +16,7 @@
 }
 
 .hero-text p{
-    width: 80%;
+    width: 40%;
     text-align: justify;
     font-size: 0.8em;
 }
@@ -145,8 +145,8 @@
 /* Seção action */
 
 .section-action {
-    background-image: var(--filter-color), url(../assets/img/cs_agents_bg.jpeg); 
-    /* background: var(--bg-form-color); */
+    /* background-image: var(--filter-color), url(../assets/img/cs_agents_bg.jpeg);  */
+    background: var(--primary-color-dark); 
     background-position: right;
     background-repeat: no-repeat;
     background-size: cover;
@@ -177,10 +177,16 @@
 }
 
 .container-steam {
-    background-color: whitesmoke;
+    display: flex;
+    justify-content: space-between;
     height: 40vh;
     width: 60%;
     border-radius: 2em;
+}
+
+#chiken_tr {
+    height: 100%;
+    width: 40%;
 }
 
 .text-steam {
