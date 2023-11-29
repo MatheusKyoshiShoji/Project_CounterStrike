@@ -35,10 +35,6 @@ function novaQuestao() {
     // Remove os indices das questões da lista de questoesDisponiveis, evita com que as questoes não se repitam
     questoesDisponiveis.splice(indice1, 1);
 
-    /*     console.log(indiceQuestao); */
-    /*     console.log(questaoCorrespondente.opcao); */
-
-
     var opcaoTamanho = questaoCorrespondente.opcao.length;
     // Enviar as opções disponiveis para o vetor
     for (var i = 0; i < opcaoTamanho; i++) {
@@ -51,8 +47,6 @@ function novaQuestao() {
         var opcaoIndice = opcoesDisponiveis[parseInt(Math.random() * opcoesDisponiveis.length)];
         var indice2 = opcoesDisponiveis.indexOf(opcaoIndice);
         opcoesDisponiveis.splice(indice2, 1);
-        /* console.log(opcaoIndice); */
-
 
         var elementoOpcao = document.createElement("div");
         elementoOpcao.innerHTML = questaoCorrespondente.opcao[opcaoIndice];

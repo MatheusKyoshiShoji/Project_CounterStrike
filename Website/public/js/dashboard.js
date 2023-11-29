@@ -9,8 +9,10 @@ var danoCausado = sessionStorage.DANO_CAUSADO
 var hs = sessionStorage.HS 
 var bombasPlantadas = sessionStorage.BOMBAS_PLANTADAS 
 var bombasDefusadas = sessionStorage.BOMBAS_DEFUSADAS 
-var melhoresMapas = sessionStorage.MELHORES_MAPA 
-var mapasWr = sessionStorage.MELHORES_MAPA_WR 
+var melhoresMapas = sessionStorage.MELHORES_MAPA.split(',')
+var mapasWr = sessionStorage.MELHORES_MAPA_WR.split(',')
+var armas = sessionStorage.ARMAS.split(',')
+var armasAbate = sessionStorage.ARMAS_ABATE.split(',')
 var melhorMapa = sessionStorage.MELHOR_MAPA 
 var piorMapa = sessionStorage.PIOR_MAPA 
 // DATA CALCULO
@@ -72,12 +74,7 @@ const ctxMapPlayed = document.getElementById('map_played').getContext('2d');
 const ctxWeapon = document.getElementById('weapon_used').getContext('2d');
 
 const dataMap = {
-    labels: [
-        'Mirage',
-        'Overpass',
-        'Dust 2',
-        'Vertigo',
-    ],
+    labels: melhoresMapas,
     datasets: [{
         data: mapasWr,
         fill: true,
@@ -94,6 +91,8 @@ const configMapPlayed = {
     type: 'radar',
     data: dataMap,
     options: {
+        responsive: true,
+        maintainAspectRatio: false,
         elements: {
             line: {
                 borderWidth: 3
@@ -116,7 +115,7 @@ const configMapPlayed = {
         plugins: {
             title: {
                 display: true,
-                text: 'Performance Mapas',
+                text: 'Melhores Mapas',
                 color: '#fff',
                 font: {
                     size: 16,
@@ -132,17 +131,9 @@ const configMapPlayed = {
 const mapsPlayedChart = new Chart(ctxMapPlayed, configMapPlayed);
 
 const dataWeapon = {
-    labels: [
-        'Ak-47',
-        'M4a1',
-        'AWP',
-        'Deagle',
-        'Famas',
-        'Galilar',
-        'p90'
-    ],
+    labels: armas,
     datasets: [{
-        data: [80, 70, 60, 64, 40, 38, 68],
+        data: armasAbate,
         fill: true,
         backgroundColor: 'rgba(53, 97, 44, 0.6)',
         borderColor: 'rgb(62, 207, 68)',
@@ -157,6 +148,8 @@ const configWeapon = {
     type: 'radar',
     data: dataWeapon,
     options: {
+        responsive: true,
+        maintainAspectRatio: false,
         elements: {
             line: {
                 borderWidth: 3
@@ -167,8 +160,6 @@ const configWeapon = {
                 angleLines: {
                     display: false
                 },
-                suggestedMin: 0,
-                suggestedMax: 100,
                 backgroundColor: '#1F202F',
                 ticks: {
                     maxTicksLimit: 6,
@@ -322,15 +313,9 @@ const RatingChart = new Chart(ctxRating, configRating);
 
 
 const data = {
-    labels: [
-        'Mirage',
-        'Overpass',
-        'Dust 2',
-        'Vertigo',
-        'Inferno',
-    ],
+    labels: melhoresMapas,
     datasets: [{
-        data: [68, 60, 54, 52, 51],
+        data: mapasWr,
         fill: true,
         backgroundColor: [
             'rgb(113, 178, 76)',
@@ -396,8 +381,20 @@ const configTopMap = {
         responsive: true,
         maintainAspectRatio: false,
         plugins: {
+            title: {
+                display: true,
+                text: 'Melhores mapas',
+                color: '#fff',
+                font: {
+                    size: 16,
+                },
+                padding: {
+                    top: 5,
+                    bottom: 5
+                }
+            },
             legend: {
-                display: false,
+                display: false
             }
         },
         scales: {
@@ -436,15 +433,9 @@ const chartTopMap = new Chart(
 
 
 const dataTopWeapon = {
-    labels: [
-        'AK-47',
-        'M4A1',
-        'AWP',
-        'Degle',
-        'P90',
-    ],
+    labels: armas,
     datasets: [{
-        data: [80, 72, 60, 50, 48],
+        data: armasAbate,
         fill: true,
         backgroundColor: 'rgba(53, 97, 44, 0.6)',
         backgroundColor: [
@@ -477,8 +468,20 @@ const configTopWeapon = {
         maintainAspectRatio: false,
         indexAxis: 'y',
         plugins: {
+            title: {
+                display: true,
+                text: 'Mais abates',
+                color: '#fff',
+                font: {
+                    size: 16,
+                },
+                padding: {
+                    top: 5,
+                    bottom: 5
+                }
+            },
             legend: {
-                display: false,
+                display: false
             }
         },
         scales: {

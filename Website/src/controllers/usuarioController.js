@@ -1,5 +1,5 @@
 const { API } = require('csgo.js');
-const { MAPS } = require("csgo.js");
+const { MAPS, WEAPONS } = require("csgo.js");
 require('dotenv').config();
 var usuarioModel = require("../models/usuarioModel");
 var quizModel = require("../models/quizModel")
@@ -96,7 +96,7 @@ async function pegarDadosSteam(req, res) {
         if (steamId == undefined) {
             res.status(400).send("Seu steamId está undefined!");
         } else {
-            console.log("tome " + steamId);
+            console.log("SteamID: " + steamId);
             const userSteam = await API.fetchUser(steamId, process.env.STEAM_TOKEN);
 
             const { avatarfull } = userSteam.info();
@@ -136,6 +136,25 @@ async function pegarDadosSteam(req, res) {
                 }
             }
 
+            const weapons = userSteam.weapons();
+            const armas = Object.keys(weapons)
+
+            const listaArmas = []
+            const listaAbatesPorTiro = []
+        
+            for (const name of armas) {
+                const weapon = weapons[name];
+                if (weapon.kills > 1000) {
+                    console.log(`You got +1000 kills with ${WEAPONS[name]}! E você teve ${weapon.kills}`)
+                    listaArmas.push(`${WEAPONS[name]}`);
+                    listaAbatesPorTiro.push(weapon.kills);
+                    if(listaArmas.length > 5) {
+                        break;
+                    }
+                    
+                }
+            }
+
             res.json({
                 fotoPerfil: avatarfull,
                 partiadas: matches_played,
@@ -151,7 +170,9 @@ async function pegarDadosSteam(req, res) {
                 listaMelhoresMapas,
                 listaMelhoresMapasWr,
                 melhorMapa: melhorMapaLista,
-                piorMapa: piorMapaLista
+                piorMapa: piorMapaLista,
+                listaArmas,
+                listaAbatesPorTiro
             })
         }
     } catch (error) {

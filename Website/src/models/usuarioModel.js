@@ -26,5 +26,4 @@ function cadastrar(username, steamId, senha, idOrg) {
 module.exports = {
     autenticar,
     cadastrar
-
 };

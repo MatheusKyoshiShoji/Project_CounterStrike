@@ -21,6 +21,8 @@ function dadosSteam(steamId) {
                     sessionStorage.MELHORES_MAPA_WR = json.listaMelhoresMapasWr;
                     sessionStorage.MELHOR_MAPA = json.melhorMapa;
                     sessionStorage.PIOR_MAPA = json.piorMapa;
+                    sessionStorage.ARMAS = json.listaArmas;
+                    sessionStorage.ARMAS_ABATE = json.listaAbatesPorTiro;
                 });
 
                 atualizarFoto();
