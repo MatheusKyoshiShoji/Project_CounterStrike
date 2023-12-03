@@ -154,7 +154,7 @@ function cadastrar() {
                     alert("Cadastro realizado com sucesso! Redirecionando para tela de Login...")
 
                     setTimeout(() => {
-                        window.location = "index.html";
+                        location.reload();
                     }, "2000");
 
                 } else {
