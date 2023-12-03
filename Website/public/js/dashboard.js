@@ -24,9 +24,6 @@ var kpr = abates / roundsJogados;
 var dpr = mortes / roundsJogados;
 var rating = (kpr + dpr + kd) / 3;
 
-console.log(melhoresMapas);
-console.log(mapasWr);
-
 function exibirDados() {
     var idPartidasGanhasPerfil = document.querySelector(".partidas-ganha-perfil")
     var idPartidasGanhas = document.querySelector(".partidas-ganha")
@@ -311,26 +308,39 @@ const configRating = {
 const ctxRating = document.getElementById('chart_Rating').getContext('2d');
 const RatingChart = new Chart(ctxRating, configRating);
 
+// Gráfico de barra melhores mapas
+
+const borderColor = ['rgba(202, 81, 81, 0.8)', 'rgba(202, 81, 81, 0.8)', 'rgba(202, 81, 81, 0.8)', 'rgba(202, 81, 81, 0.8)', 'rgba(202, 81, 81, 0.8)',
+'rgba(202, 81, 81, 0.8)'];
+const backgroundColor = ['rgb(113, 178, 76)', 'rgb(113, 178, 76)', 'rgb(113, 178, 76)', 'rgb(113, 178, 76)', 'rgb(113, 178, 76)', 'rgb(113, 178, 76)',];
+
+let merged = melhoresMapas.map((border, i) => {
+    return {"border": borderColor[i], "background": backgroundColor[i], "datapoint": mapasWr[i], "label": melhoresMapas[i]}
+});
+
+const dataSort = merged.sort(function (a, b) {
+    return  b.datapoint - a.datapoint 
+}) 
+
+const bcMap = [];
+const bgcMap = [];
+const dbMap = [];
+const labMap = [];
+
+for (var i = 0; i < dataSort.length; i++) {
+    bcMap.push(dataSort[i].border);
+    bgcMap.push(dataSort[i].background);
+    dbMap.push(dataSort[i].datapoint);
+    labMap.push(dataSort[i].label);
+}
 
 const data = {
-    labels: melhoresMapas,
+    labels: labMap,
     datasets: [{
-        data: mapasWr,
+        data: dbMap,
+        borderColor: bcMap,
+        backgroundColor: bgcMap,
         fill: true,
-        backgroundColor: [
-            'rgb(113, 178, 76)',
-            'rgb(113, 178, 76)',
-            'rgb(113, 178, 76)',
-            'rgb(113, 178, 76)',
-            'rgb(113, 178, 76)',
-        ],
-        borderColor: [
-            'rgba(202, 81, 81, 0.8)',
-            'rgba(202, 81, 81, 0.8)',
-            'rgba(202, 81, 81, 0.8)',
-            'rgba(202, 81, 81, 0.8)',
-            'rgba(202, 81, 81, 0.8)',
-          ],
         borderWidth: 0,
         borderSkipped: false,
         borderRadius: 10,
@@ -431,27 +441,38 @@ const chartTopMap = new Chart(
 );
 
 
+const borderColorWep = ['rgba(28, 36, 79, 0.2)', 'rgba(28, 36, 79, 0.2)', 'rgba(28, 36, 79, 0.2)', 'rgba(28, 36, 79, 0.2)', 'rgba(28, 36, 79, 0.2)', 
+'rgba(28, 36, 79, 0.2)',];
+const backgroundColorWep = ['rgba(41, 52, 115, 1)', 'rgba(41, 52, 115, 1)', 'rgba(41, 52, 115, 1)', 'rgba(41, 52, 115, 1)', 'rgba(41, 52, 115, 1)',
+'rgba(41, 52, 115, 1)',];
+
+let mergedWep = armas.map((armasNome, i) => {
+    return {"datapoint": armasAbate[i], "label": armas[i], }
+});
+
+const dataSortWep = mergedWep.sort(function (a, b) {
+    return  b.datapoint - a.datapoint 
+}) 
+
+/* const bcWep = [];
+const bgcWep = []; */
+const dbWep = [];
+const labWep = [];
+
+for (var i = 0; i < dataSortWep.length; i++) {
+/*     bcWep.push(dataSortWep[i].border);
+    bgcWep.push(dataSortWep[i].background); */
+    dbWep.push(dataSortWep[i].datapoint);
+    labWep.push(dataSortWep[i].label);
+}
 
 const dataTopWeapon = {
-    labels: armas,
+    labels: labWep,
     datasets: [{
-        data: armasAbate,
+        data: dbWep,
+        backgroundColor: backgroundColorWep,
+        borderColor: borderColorWep,
         fill: true,
-        backgroundColor: 'rgba(53, 97, 44, 0.6)',
-        backgroundColor: [
-            'rgba(255, 26, 104, 1)',
-            'rgba(54, 162, 235, 1)',
-            'rgba(255, 206, 86, 1)',
-            'rgba(75, 192, 192, 1)',
-            'rgba(153, 102, 255, 1)',
-        ],
-        borderColor: [
-            'rgba(255, 26, 104, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 206, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)',
-            'rgba(153, 102, 255, 0.2)',
-          ],
         borderWidth: 0,
         borderSkipped: false,
         borderRadius: 10,

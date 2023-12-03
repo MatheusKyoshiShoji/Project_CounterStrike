@@ -114,6 +114,9 @@ async function pegarDadosSteam(req, res) {
                 if (map.wr > 0.5 && map.played > 100) {
                     listaMelhoresMapas.push(`${MAPS[name]}`);
                     listaMelhoresMapasWr.push(parseInt(mapWinrate));
+                    if(listaMelhoresMapas.length > 5) {
+                        break;
+                    }
                 }
             }
 
@@ -145,7 +148,6 @@ async function pegarDadosSteam(req, res) {
             for (const name of armas) {
                 const weapon = weapons[name];
                 if (weapon.kills > 1000) {
-                    console.log(`You got +1000 kills with ${WEAPONS[name]}! E você teve ${weapon.kills}`)
                     listaArmas.push(`${WEAPONS[name]}`);
                     listaAbatesPorTiro.push(weapon.kills);
                     if(listaArmas.length > 5) {

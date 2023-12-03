@@ -132,7 +132,6 @@ html {
 .troca-botao {
     color: var(--secondary-color);
     cursor: pointer;
-    font-weight: 600;
     transition: color 0.6s;
 }
 
@@ -141,6 +140,6 @@ html {
     margin-bottom: 20px;
 }
 
-.steam-link a {
+.link a {
     color: var(--secondary-color);
 }
