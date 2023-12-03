@@ -6,11 +6,19 @@
     color: var(--font-primary-color);
     font-size: 1em;
     height: 100vh;
-    background-image: linear-gradient(80deg, rgba(22, 27, 46, 0.9) 0%, rgba(18, 24, 46, 0.9) 61%, rgba(19, 27, 47, 0.9) 100%), url(../assets/img/bg_esport.jpg);
+    background-image: var(--filter-color2), url(../assets/img/major_bg.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
+}
+
+.hero-img-team {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 80%;
+    width: 50%;
 }
 
 .container-text{
@@ -56,13 +64,12 @@
 
 .section-cs_eSports {
     padding: 2rem 10%;
-    background: var(--bg-form-color);
+    background: var(--filter-color2), url(../assets/img/bg_esport.jpg);
     color: var(--font-primary-color);
 }
 
 .section-cs_eSports h1 {
     text-align: center;
-    color: var(--secondary-color);
 }
 
 .container-cs_eSports .container-image {
@@ -96,6 +103,7 @@
 
 .container-topics {
     border: 2px solid var(--primary-color);
+    background: var(--primary-color-dark);
     padding: 1rem;
     text-align: justify;
     font-size: 0.7em;
@@ -193,7 +201,6 @@
     width: 45%;
     background: var(--filter-color);
     border-radius: 0px 20px 20px 0px;
-    opacity: 0.8;
 }
 
 .section-importancia {

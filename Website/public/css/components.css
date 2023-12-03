@@ -236,6 +236,64 @@ footer {
     z-index: 0;
 }
 
-/* .btn-form:hover p {
-    color: var(--primary-color);
-} */
+.modal {
+    top: 10%;
+    left: 10%;
+    display: none;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+}
+
+@keyframes modalAnimation {
+    0%{transform: translateX(-100%);}
+    100%{transform: translateX(0)}
+}
+
+.modal.active {
+    display: flex;
+    animation: modalAnimation 1s;
+}
+
+.modal-content {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    width: 500px;
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+    border: solid var(--secondary-color) 2px;
+}
+
+.close-icon {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    color: var(--font-primary-color);
+    cursor: pointer;
+    transition: .3s;
+    font-size: 1em;
+}
+
+.close-icon:hover {
+    color: var(--secondary-color);
+}
+
+.modal-body {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 1rem;
+}
+
+span.icon-error {
+    font-size: 50px;
+    color: var(--secondary-color);
+}
+
+.right-items {
+    margin-left: 30px;
+}
+

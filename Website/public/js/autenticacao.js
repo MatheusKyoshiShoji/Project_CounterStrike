@@ -27,16 +27,15 @@ function dadosSteam(steamId) {
 
                 atualizarFoto();
 
-            }  else {
+            } else {
                 console.log("Houve um erro ao acessar o seu SteamID!");
 
                 resposta.text().then((texto) => {
                     console.error(texto);
-                    /* finalizarAguardar(texto); */
                 });
             }
         })
-} 
+}
 
 function entrar() {
 
@@ -45,9 +44,8 @@ function entrar() {
     var audio = document.getElementById("loginAudio")
 
     if (usernameVar == "" || senhaVar == "") {
-        /* cardErro.style.display = "block"; */
-        alert("Mensagem de erro para todos os campos em branco")
-        /* finalizarAguardar(); */
+        var textoErro = `Mensagem de erro para todos os campos em branco`
+        modalError(textoErro);
         return false;
     } else {
         setInterval(/* sumirMensagem, */ 5000);
@@ -82,18 +80,19 @@ function entrar() {
 
                     dadosSteam(json.steamId);
                     setTimeout(function () {
-                        
+
                         window.location = "./profile/stats.html";
                     }, 3000); // apenas para exibir o loading
                 });
 
-                
+
             } else {
                 console.log("Houve um erro ao tentar realizar o login!");
 
                 resposta.text().then((texto) => {
                     console.error(texto);
-                    /* finalizarAguardar(texto); */
+                    textoErro = `Erro na validaçãode dados ${texto}`
+                    modalError(textoErro);
                 });
             }
         })
@@ -114,51 +113,67 @@ function cadastrar() {
     var senhaConfirma = input_senhaConfirma.value;
     var organizacaoVar = listaorganizacao.value;
 
-    var regexUsername =  /^[a-zA-Z0-9]+$/;
-    
+    var textoErro;
+
 
     if (usernameVar == "" || steamIdVar == "" || senhaVar == "" || organizacaoVar == "" || senhaConfirma == "") {
-        alert("Todos os campos devem estar preenchidos");
+        textoErro = "Todos os campos devem estar preenchidos"
+        modalError(textoErro)
         return false;
-    } else if(usernameVar.lenght < 4 && usernameVar.indexOf('')) {
-        
+    } else if (usernameVar.length  <= 4 || usernameVar.indexOf(' ') >= 0) {
+        textoErro = "Username deve conter pelo menos mais de 4 caracteres e não conter nenhum espaçamento"
+        modalError(textoErro)
+        return false;
+    } else if (senhaVar.length  <= 6 || senhaVar.indexOf(' ') >= 0) {
+        textoErro = "Senha deve conter pelo menos mais de 6 caracteres e não conter nenhum espaçamento"
+        modalError(textoErro)
+        return false;
+    } else if (senhaVar !== senhaConfirma) {
+        textoErro = "A senhas não se conferem";
+        modalError(textoErro);
+        return false;
+    } else {
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                usernameServer: usernameVar,
+                steamIdServer: steamIdVar,
+                senhaServer: senhaVar,
+                idOrgServer: organizacaoVar
+            }),
+        })
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+                    alert("Cadastro realizado com sucesso! Redirecionando para tela de Login...")
+
+                    setTimeout(() => {
+                        window.location = "index.html";
+                    }, "2000");
+
+                } else {
+                    throw "Houve um erro ao tentar realizar o cadastro!";
+                }
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+                textoErro = `Erro ao inserir os dados no Banco de Dados ${resposta}`
+                modalError(textoErro);
+            });
+
+        return false;
     }
 
-    // Enviando o valor da nova input
-    fetch("/usuarios/cadastrar", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            // crie um atributo que recebe o valor recuperado aqui
-            // Agora vá para o arquivo routes/usuario.js
-            usernameServer: usernameVar,
-            steamIdServer: steamIdVar,
-            senhaServer: senhaVar,
-            idOrgServer: organizacaoVar
-        }),
-    })
-        .then(function (resposta) {
-            console.log("resposta: ", resposta);
 
-            if (resposta.ok) {
-                alert("Cadastro realizado com sucesso! Redirecionando para tela de Login...")
 
-                setTimeout(() => {
-                    window.location = "index.html";
-                }, "2000");
 
-            } else {
-                throw "Houve um erro ao tentar realizar o cadastro!";
-            }
-        })
-        .catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
-            /* finalizarAguardar(); */
-        });
 
-    return false;
 }
 
 
@@ -182,3 +197,24 @@ function listar() {
 document.getElementById("autenticar").addEventListener("click", () => {
     entrar();
 });
+
+function modalError(mensagemErro) {
+    const modal = document.querySelector('.modal')
+    const closeBtn = document.querySelector('.close-icon')
+    const textModal = document.getElementById('mensagem-erro');
+
+    modal.classList.add('active')
+    textModal.innerHTML = `${mensagemErro}`;
+
+    closeBtn.addEventListener('click', () => {
+        modal.classList.remove('active');
+    })
+
+    window.addEventListener('click', event => {
+        if (event.target == modal) {
+            modal.classList.remove('active')
+        }
+    })
+
+}
+
